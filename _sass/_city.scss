@@ -1,0 +1,134 @@
+/* Styles specific for city template */
+
+.city_title {
+}
+
+.city_cta {
+}
+
+.team_title {
+  margin: 0 0 50px 50px;
+}
+
+.team_twitter {
+  display: block;
+  margin: 15px auto;
+  width:522px;
+}
+
+.member_count {
+  display: block;
+  font-size: .666em;
+}
+
+.tagline {
+  font-size: 35px;
+  line-height: 1.2;
+  margin-bottom: 1em;
+  text-shadow: 0 1px 1px rgba(255,255,255,.8);
+}
+
+.site_header_img {
+  color: $ots_blue;
+  background-size: 768px;
+  background-repeat: no-repeat;
+  padding-top: 30em;
+}
+
+.site_header_berlin {
+  background-image: url(../images/bg_berlin.jpg);
+  background-position: 40% 60%;
+}
+
+.site_header_bristol {
+  background-image: url(../images/bg_bristol.jpg);
+  background-position: 40% 60%;
+}
+
+.site_header_brussels {
+  background-image: url(../images/bg_brussels.jpg);
+  background-position: 0% 25%;
+}
+
+.site_header_rheinmain {
+  background-image: url(../images/bg_rheinmain.jpg);
+  background-position: 0% 30%;
+}
+
+.site_header_dortmund {
+  background-image: url(../images/bg_dortmund.jpg);
+  background-position: 0% 70%;
+}
+
+.site_header_hamburg {
+  background-image: url(../images/bg_hamburg.jpg);
+  background-position: 20% 10%;
+}
+
+.site_header_istanbul {
+  background-image: url(../images/bg_istanbul.jpg);
+  background-position: 0% 50%;
+}
+
+.site_header_leipzig {
+  background-image: url(../images/bg_leipzig.jpg);
+  background-position: 50% 50%;
+  @media screen and (max-width:800px) {
+    background-position: top center;
+  }
+}
+
+.site_header_melbourne {
+  background-image: url(../images/bg_melbourne.jpg);
+  background-position: 45% 0%;
+}
+
+.site_header_ramallah {
+  background-image: url(../images/bg_ramallah.jpg);
+  background-position: 55% 0%;
+}
+
+.site_header_san_francisco {
+  background-image: url(../images/bg_san_francisco.jpg);
+  background-position: 20% 76%;
+}
+
+.site_header_stockholm {
+  background-image: url(../images/bg_stockholm.jpg);
+  background-position: 30% 45%;
+}
+
+.site_header_zurich {
+  background-image: url(../images/bg_zurich.jpg);
+  background-position: 100% 5%;
+  background-size: 105% !important;
+}
+
+.site_header_nairobi {
+  background-image: url(../images/bg_nairobi.jpg);
+  background-position: 50% 34%;
+  background-size: 105%;
+}
+
+.site_header_milan {
+  background-image: url('http://www.mytravelingsoul.com/wp-content/uploads/2014/05/Duomo-Milano.jpg');
+  background-position: 50% 21%;
+
+  h1 a, h2 {
+    text-shadow: 1px 1px 3px #E7E8E4;
+  }
+
+}
+
+.site_header_romagna {
+  background-image: url(../images/bg_romagna.jpg);
+  background-position: 50% 34%;
+  background-size: 105%;
+}
+
+.site_header_about {
+  height: 600px;
+  background-size: 1300px;
+  background-image: url(../images/bg_about.jpg);
+  background-position: 50% 50%;
+}

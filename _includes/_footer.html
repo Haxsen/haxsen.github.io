@@ -1,0 +1,160 @@
+  <footer>
+    <div class="container container_wide">
+
+      <ul class="float_list float_list_4">
+        <li>
+          <h3>Chapters</h3>
+          <ul>
+            {% for city in site.cities %}
+              {% include _metadata doc=city %}
+              {% unless city.is_inactive %}
+              <li>
+                <a href="{{site.baseurl}}/{{key}}" title="{{city.location}}">
+                  {{city.title}}
+                </a>
+              </li>
+              {% endunless %}
+            {% endfor %}
+          </ul>
+          Inactive:
+          <ul>
+            {% for city in site.cities %}
+              {% include _metadata doc=city %}
+              {% if city.is_inactive %}
+              <li>
+                <a href="{{site.baseurl}}/{{key}}" title="{{city.location}}">
+                  {{city.title}}
+                </a>
+              </li>
+              {% endif %}
+            {% endfor %}
+            <li>&nbsp;</li>
+            <li>
+              <a href="{{site.baseurl}}/handbooks/city-blueprint.html">Your City?</a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <h3>Connect</h3>
+          <ul>
+            <li>
+              <a href="https://blog.opentechschool.org/">Blog</a>
+            </li>
+            <li>
+              <a href="https://twitter.com/opentechschool">Twitter</a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/OpenTechSchool">Facebook</a>
+            </li>
+            <li>
+              <a href="https://www.meetup.com/find/?allMeetups=true&amp;keywords=opentechschool&amp;radius=Infinity&amp;sort=default">Meetup</a>
+            </li>
+            <li>
+              <a href="https://github.com/OpenTechSchool/">GitHub</a>
+            </li>
+            <li>
+              <a href="https://discourse.opentechschool.org/">Discourse</a>
+            </li>
+            <li>
+              <a href="https://groups.google.com/a/opentechschool.org/forum/?fromgroups#!forum/discuss.global">Mailing list</a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/user/OpenTechSchool">YouTube</a>
+            </li>
+
+          </ul>
+        </li>
+
+        <li>
+          <h3>Handbooks</h3>
+          <ul>
+            <li>
+              <a href="{{site.baseurl}}/handbooks/">Index</a>
+            </li>
+            <li>
+              <a href="https://opentechschool.github.com/slides/presentations/coaching/">Coaching Guide</a>
+            </li>
+            <li>
+              <a href="{{site.baseurl}}/handbooks/workshops/organisers-schedule.html">Workshop Schedule</a>
+            </li>
+            <li>
+              <a href="{{site.baseurl}}/handbooks/city-blueprint.html">City Blueprint</a>
+            </li>
+            <li>
+              <a href="{{site.baseurl}}/handbooks/contribute.html">Contribute to Learning Materials</a>
+            </li>
+            <li>
+              <a href="{{site.baseurl}}/handbooks/blog-posts.html">Blog Posts</a>
+            </li>
+            <li>
+              <a href="{{site.baseurl}}/handbooks/learners-meetups.html">Learners Meetups</a>
+            </li>
+            <li>
+              <a href="{{site.baseurl}}/handbooks/sponsorship-and-support.html">Becoming a Sponsor</a>
+            </li>
+            <li>
+              <a href="{{site.baseurl}}/handbooks/mailing-lists.html">Mailing Lists</a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <h3>More content</h3>
+          <ul>
+            <li>
+              <a href="{{site.baseurl}}/press.html">Press</a>
+            </li>
+            <li>
+              <a href="{{site.baseurl}}/imprint.html">Imprint</a>
+            </li>
+            <li>
+              <a href="{{site.baseurl}}/contact.html">Contacts</a>
+            </li>
+            <li>
+              <a href="{{site.baseurl}}/foundation/">The Foundation</a>
+            </li>
+            <li>
+              <a href="{{site.baseurl}}/sponsors.html">Our Sponsors</a>
+            </li>
+            <li>
+              <a href="{{site.baseurl}}/handbooks/styles.html">Style Guide</a>
+            </li>
+            <li>
+              <a href="{{site.baseurl}}/material.html">Learning Materials</a>
+            </li>
+            <li>
+              <a href="{{site.baseurl}}/handbooks/promotion.html">Promotion</a>
+            </li>
+            <li>
+              <a href="{{site.baseurl}}/code-of-conduct/">Code of Conduct</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <p>
+        <a title="we are under creative commons"
+          href="https://creativecommons.org/licenses/by/3.0/"><img
+          src="{{site.baseurl}}/images/by-sa-cp.png" alt="CC-BY-SA 3.0"></a><br>
+        <small>
+          Except <a href="{{site.baseurl}}/imprint.html">where otherwise noted</a>,
+          content on this site is licensed under a
+          <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/deed.en_US">
+           Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+        </small>
+      </p>
+
+      <p>
+        © 2016 by
+        <a href="{{site.baseurl}}/foundation/">
+          OpenTechSchool e.V.
+        </a>&nbsp;&nbsp;||&nbsp;&nbsp;
+        <a href="{{site.baseurl}}/contact.html">
+          Contact us
+        </a>&nbsp;&nbsp;||&nbsp;&nbsp;
+        <a href="{{site.baseurl}}/imprint.html">Impressum</a>
+      </p>
+
+    </div>
+  </footer>

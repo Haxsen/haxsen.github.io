@@ -1,0 +1,26 @@
+url: www.opentechschool.org
+baseurl: ""
+blog_domain: blog.opentechschool.org
+css_version: 6
+markdown: kramdown
+
+encoding: UTF-8
+exclude: ['Gemfile', 'Gemfile.lock', 'vendor']
+
+plugins:
+  - jekyll-redirect-from
+
+collections:
+  cities:
+    output: true
+    permalink: /:path/
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "cities"
+    values:
+      layout: "city"
+      does:
+        - workshops
