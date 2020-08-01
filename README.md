@@ -1,3 +1,7 @@
+# Wiki taken from OTS repo: https://github.com/OpenTechSchool/www.opentechschool.org
+# Check them out at: http://www.opentechschool.org
+# This repository is for testing github pages.
+-----
 # [www.opentechschool.org](http://www.opentechschool.org)
 
 [![Join the chat at https://gitter.im/OpenTechSchool/www.opentechschool.org](https://badges.gitter.im/OpenTechSchool/www.opentechschool.org.svg)](https://gitter.im/OpenTechSchool/www.opentechschool.org?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
