@@ -3,7 +3,6 @@ baseurl: ""
 blog_domain: blog.opentechschool.org
 css_version: 6
 markdown: kramdown
-gem "kramdown", ">= 2.3.0"
 
 encoding: UTF-8
 exclude: ['Gemfile', 'Gemfile.lock', 'vendor']
