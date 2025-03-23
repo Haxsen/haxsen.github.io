@@ -105,8 +105,8 @@ and cross-platform apps, who has worked in B2B/B2C/Web3 organizations actively t
           <div className="space-y-8">
             {[
               {
-                title: 'Freelance Engineer - Backend/DevOps',
-                company: 'PUFFER FINANCE',
+                title: 'Contractual Freelance Engineer - Backend/DevOps',
+                company: 'PUFFER FOUNDATION',
                 period: 'Mar 2024 - Present',
                 description: '● Developed backend automation for ETH withdrawals solving urgent liquidity problems\n● Optimized AWS infrastructure saving $5000+ monthly\n● Managing 7+ deployments across staging/production including ECS, EC2 and Lambda\n● Implemented Infrastructure-as-Code using Terraform with ECS containers and Load balancers\n● Deployed UniFi Testnet using Taiko L2 & docker compose on EC2 instances',
                 tech: 'Python, TypeScript, Rust, Solidity, Node.js, PostgreSQL, AWS, Terraform, Web3'
@@ -119,14 +119,14 @@ and cross-platform apps, who has worked in B2B/B2C/Web3 organizations actively t
                 tech: 'Solana, PHP, C#, Unity3D, Web3, NFTs'
               },
               {
-                title: 'Computer Engineer - Simulators',
+                title: 'Computer Engineer - Simulators (Full time)',
                 company: 'GOVT OF PAKISTAN',
                 period: 'Oct 2020 - Jan 2023',
-                description: '● Designed 2 weapon simulators with custom hardware using Arduino and sensors\n● Achieved 95%+ user satisfaction saving over $1M in costs\n● Integrated SQLite database for user statistics and leaderboards',
+                description: '● Designed 2 weapon simulators (ATGM & HSR) with custom hardware using Arduino and sensors\n● Achieved 95%+ user satisfaction saving over $1M in costs\n● Integrated SQLite database for user statistics and leaderboards',
                 tech: 'C++, Arduino, C#, Unity3D, .NET'
               },
               {
-                title: 'Software Engineer - Games',
+                title: 'Software Engineer - Games (Part time)',
                 company: 'COLTO SRL',
                 period: 'Oct 2021 - Jan 2023',
                 description: '● Developed games including Scooby Doo Funfair Scare for Cartoon Network UK\n● Reduced loading times by 5x using Addressables with 93% client satisfaction',
