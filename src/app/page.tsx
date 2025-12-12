@@ -19,8 +19,7 @@ export default function Home() {
             Software Engineer
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 animate-slide-up" style={{ animationDelay: '0.4s' }}>
-          Computer & Software Engineer with over 5 years of experience in developing web services, scalable infrastructure 
-and cross-platform apps, who has worked in B2B/B2C/Web3 organizations actively transitioning to Blockchain Engineering.
+          Computer & Software Engineer with over 6 years of experience in developing backend web services, scalable infrastructure, and cross-platform apps, working in B2B/B2C/Web3 organizations. An individual who values teamwork and fosters a positive environment. Well-versed in code best practices, software architecture, operations, and production.
           </p>
           <div className="flex justify-center gap-4 animate-slide-up" style={{ animationDelay: '0.6s' }}>
             <a
@@ -65,32 +64,32 @@ and cross-platform apps, who has worked in B2B/B2C/Web3 organizations actively t
           <div className="space-y-8">
             <div className="bg-white dark:bg-gray-700 rounded-xl shadow-lg p-6 border border-gray-100 dark:border-gray-600">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Programming</h3>
-              <p className="text-gray-600 dark:text-gray-300">C#, Python, Java, JavaScript/TypeScript, Rust, Solidity, PHP</p>
+              <p className="text-gray-600 dark:text-gray-300">C#, Python, TypeScript, Java, JavaScript, Go, Rust, Solidity, Move, PHP, Bash/Shell</p>
             </div>
 
             <div className="bg-white dark:bg-gray-700 rounded-xl shadow-lg p-6 border border-gray-100 dark:border-gray-600">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Databases</h3>
-              <p className="text-gray-600 dark:text-gray-300">PostgreSQL, MongoDB, SQLite, Redis</p>
-            </div>
-
-            <div className="bg-white dark:bg-gray-700 rounded-xl shadow-lg p-6 border border-gray-100 dark:border-gray-600">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Technologies</h3>
-              <p className="text-gray-600 dark:text-gray-300">Agile, Git, Vim/Nano, Jetbrains, Postman/HTTPie, REST APIs, React, Node.js, ASP.NET, Jira, Unity</p>
+              <p className="text-gray-600 dark:text-gray-300">PostgreSQL, MySQL, MongoDB, SQLite</p>
             </div>
 
             <div className="bg-white dark:bg-gray-700 rounded-xl shadow-lg p-6 border border-gray-100 dark:border-gray-600">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Blockchain</h3>
-              <p className="text-gray-600 dark:text-gray-300">Web3 wallet, Tenderly, Execution/Consensus clients, Geth, Nethermind, Lighthouse, Bridge relayer</p>
+              <p className="text-gray-600 dark:text-gray-300">Wallets, RPC, Webhooks, Tenderly, Execution/Consensus</p>
+            </div>
+
+            <div className="bg-white dark:bg-gray-700 rounded-xl shadow-lg p-6 border border-gray-100 dark:border-gray-600">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Technologies</h3>
+              <p className="text-gray-600 dark:text-gray-300">Agile, Git, Vim/Nano, JetBrains, Postman/HTTPie, REST APIs, Next.js, React, Node.js, .NET, Jira, Unity, Redis</p>
             </div>
 
             <div className="bg-white dark:bg-gray-700 rounded-xl shadow-lg p-6 border border-gray-100 dark:border-gray-600">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">DevOps</h3>
-              <p className="text-gray-600 dark:text-gray-300">Rancher, Kubernetes, Docker, AWS, Terraform, Nginx, GitHub Actions, GitLab/Jenkins CI/CD, Azure</p>
+              <p className="text-gray-600 dark:text-gray-300">Docker, AWS, GCP, Terraform, Nginx, GitHub Actions, Rancher, Kubernetes, GitLab/Jenkins CI/CD, Azure</p>
             </div>
 
             <div className="bg-white dark:bg-gray-700 rounded-xl shadow-lg p-6 border border-gray-100 dark:border-gray-600">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Best Practices</h3>
-              <p className="text-gray-600 dark:text-gray-300">SOLID principles, Event-driven, Observer, Builder & State Machine pattern(s) experience</p>
+              <p className="text-gray-600 dark:text-gray-300">SOLID Principles, Event-Driven Architecture, Observer, Builder, State Machine Patterns</p>
             </div>
           </div>
         </div>
@@ -105,39 +104,44 @@ and cross-platform apps, who has worked in B2B/B2C/Web3 organizations actively t
           <div className="space-y-8">
             {[
               {
-                title: 'Contractual Freelance Engineer - Backend/DevOps',
-                company: 'PUFFER FOUNDATION',
+                title: 'Software Engineer - Backend/DevOps',
+                company: 'Puffer Finance',
+                companyUrl: 'https://puffer.fi',
                 period: 'Mar 2024 - Present',
-                description: '● Developed backend automation for ETH withdrawals solving urgent liquidity problems\n● Optimized AWS infrastructure saving $5000+ monthly\n● Managing 7+ deployments across staging/production including ECS, EC2 and Lambda\n● Implemented Infrastructure-as-Code using Terraform with ECS containers and Load balancers\n● Deployed UniFi Testnet using Taiko L2 & docker compose on EC2 instances',
-                tech: 'Python, TypeScript, Rust, Solidity, Node.js, PostgreSQL, AWS, Terraform, Web3'
+                description: 'Designed and implemented full-stack solutions to automate ETH withdrawals, resolving critical liquidity issues.\nSaved over $5,000 monthly by optimizing AWS infrastructure and migrating backend to GCP using Terraform IaC.\nDeveloped a DB access management Slack app for employee approvals.\nManaged 7+ deployments across staging and production (ECS, EC2, Lambda).\nDeployed UniFi Testnet using Optimism L2 rollup, Blockscout, and Docker Compose.',
+                tech: 'Python, TypeScript, Node.js, Next.js, Express, PostgreSQL, Docker, AWS (ECS, EC2, Lambda), GCP, Terraform, GitHub Actions CI/CD, Ethers.js, Web3.js, Ethereum, DeFi, EigenLayer, Liquid Staking, Oracles, Multisig, Rollups, Smart Contracts'
               },
               {
-                title: 'Software Engineer - Backend/Game',
-                company: 'CURFLUFFLE',
+                title: 'Software Engineer - Backend/DevOps',
+                company: 'Curfluffle',
+                companyUrl: 'https://www.worldwar0x.com/',
                 period: 'Jan 2023 - Mar 2024',
-                description: '● Developed and released World War 0x for PC, WebGL, iOS and Android platforms\n● Led team of artists, designers and developers\n● Improved performance by 135% through runtime optimization\n● Enhanced security with PHP backend and authenticated MySQL database',
-                tech: 'Solana, PHP, C#, Unity3D, Web3, NFTs'
+                description: 'Developed and released World War 0x for PC, WebGL, iOS, and Android platforms.\nLed a team of artists, designers, and developers.\nImproved performance by 135% through runtime optimization.\nEnhanced security with PHP backend and MySQL database.',
+                tech: 'Solana Blockchain, Helius RPC, NFTs, PHP, C#, Unity3D, Git, SourceTree, Photon Networking, MySQL, Smart Contracts, Web3 Wallets, DAO, IPFS, Metaplex Core'
               },
               {
-                title: 'Computer Engineer - Simulators (Full time)',
-                company: 'GOVT OF PAKISTAN',
+                title: 'Computer Engineer - Fullstack',
+                company: 'Govt of Pakistan',
+                companyUrl: 'https://www.rde.gov.pk/Detail/YzljOTdlZTgtOTUwYi00OGNiLWEzMjgtNDBjN2VhMTExNTU4',
                 period: 'Oct 2020 - Jan 2023',
-                description: '● Designed 2 weapon simulators (ATGM & HSR) with custom hardware using Arduino and sensors\n● Achieved 95%+ user satisfaction saving over $1M in costs\n● Integrated SQLite database for user statistics and leaderboards',
-                tech: 'C++, Arduino, C#, Unity3D, .NET'
+                description: 'Designed 2 simulators (ATGM & Sniper Rifle) with custom Arduino hardware and sensors.\nAchieved 95%+ user satisfaction, saving over $1M.\nIntegrated SQLite database for user stats and leaderboards.',
+                tech: 'C++, Arduino IDE, C#, Unity3D, Git, SQL, .NET Framework'
               },
               {
-                title: 'Software Engineer - Games (Part time)',
-                company: 'COLTO SRL',
+                title: 'Freelance Engineer - Fullstack/Games',
+                company: 'Colto SRL',
+                companyUrl: 'https://www.colto.com/',
                 period: 'Oct 2021 - Jan 2023',
-                description: '● Developed games including Scooby Doo Funfair Scare for Cartoon Network UK\n● Reduced loading times by 5x using Addressables with 93% client satisfaction',
-                tech: 'C#, Unity3D, Git'
+                description: 'Assisted on Love Diana Dressup and CKN Toys CarHero.\nDeveloped Scooby Doo Funfair Scare for Cartoon Network UK.\nReduced loading times by 5x using Addressables, achieving 93% client satisfaction.',
+                tech: 'C#, Unity3D, JSLib, Git, SourceTree, Addressables'
               },
               {
-                title: 'Software Engineering Intern',
-                company: 'Google Summer of Code - XWIKI',
-                period: 'May 2020 - Sep 2020', 
-                description: '● Built GitHub Importer extension for importing GitHub pages/wikis\n● Implemented multi-syntax conversion support with 87% test coverage',
-                tech: 'Java, Git, Jenkins, jQuery'
+                title: 'Intern',
+                company: 'Google Summer of Code with XWiki',
+                companyUrl: 'https://summerofcode.withgoogle.com/archive/2020/projects/4840319801098240/',
+                period: 'May 2020 - Sep 2020',
+                description: 'Built GitHub Importer extension for XWiki to import GitHub pages and wikis.\nSupported Markdown with 3 syntax conversions (XWiki, MediaWiki, Creole).\nEnsured backward compatibility with 87% test coverage.',
+                tech: 'Java, Git, Jira, Jenkins CI/CD, jQuery, Apache Velocity'
               }
             ].map((exp, index) => (
               <div 
@@ -146,7 +150,20 @@ and cross-platform apps, who has worked in B2B/B2C/Web3 organizations actively t
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{exp.title}</h3>
-                <p className="text-primary-600 dark:text-primary-400 font-medium">{exp.company}</p>
+                <p className="text-primary-600 dark:text-primary-400 font-medium">
+                  {exp.companyUrl ? (
+                    <a
+                      href={exp.companyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:underline"
+                    >
+                      {exp.company}
+                    </a>
+                  ) : (
+                    exp.company
+                  )}
+                </p>
                 <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">{exp.period}</p>
                 <p className="text-gray-600 dark:text-gray-300 whitespace-pre-line">{exp.description}</p>
                 <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">Technologies: {exp.tech}</p>
@@ -165,40 +182,74 @@ and cross-platform apps, who has worked in B2B/B2C/Web3 organizations actively t
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {
-                title: 'Puffer UniFi Deployment',
-                description: 'An L2 blockchain / based rollup solution for scaling Ethereum. Built with focus on security and performance.',
-                tech: ['AWS EC2', 'AWS ACM', 'Nginx', 'Docker', 'Taiko L2']
+                title: '[Sample] LST Analytics Dashboard',
+                description: 'Go backend + Next.js frontend + Terraform infra for Ethereum staking analytics.',
+                tech: ['Go', 'Next.js', 'Terraform', 'PostgreSQL', 'AWS'],
+                links: [
+                  { label: 'Live Website', url: 'https://eth-staking-analytics-frontend.onrender.com/' },
+                  { label: 'Source Code', url: 'https://github.com/Haxsen/HxnETHstakingAnalyticsApp' }
+                ]
               },
               {
-                title: 'Puffer Withdrawal Service',
-                description: 'Automated service for calling smart contracts (Puffer Modules ABIs) on schedules, ensuring timely and secure transactions.',
-                tech: ['TypeScript', 'Express', 'Swagger', 'Web3.js', 'AWS ECR + ECS', 'AWS Secrets Manager', 'AWS Load Balancer', 'AWS CloudWatch']
-              },
-              {
-                title: 'World War 0x',
-                description: 'Cross-platform online multiplayer shooter game integrating Solana blockchain features with NFTs.',
-                tech: ['Solana Blockchain', 'Helius RPC', 'NFTs', 'PHP', 'C#', 'Unity Engine', 'Git', 'SourceTree', 'Photon Networking', 'SQL myAdmin', 
-                  'Blockchain', 'Smart Contracts', 'Web3 wallets', 'DAO', 'NFTs Collections', 'IPFS', 'Metaplex Core.']
-              },
-              {
-                title: 'GitHub Importer',
-                description: 'A web extension developed during Google Summer of Code with XWiki to import GitHub pages and wikis with multi-syntax support.',
-                tech: ['Java', 'Git', 'Jira', 'Jenkins CI/CD', 'jQuery', 'Apache Velocity']
-              },
-              {
-                title: 'Scooby Doo Funfair Scare',
-                description: 'Online cross-platform WebGL adventure game developed for Cartoon Network UK.',
-                tech: ['C#', 'Unity3d', 'JSLib', 'Git', 'SourceTree', 'Addressables']
-              },
-              {
-                title: '[Sample] Simple Eth Bank',
-                description: 'Blockchain project demonstrating secure transaction handling with dual backend architecture.',
-                tech: ['Python', 'Rust', 'Solidity']
+                title: '[Sample] Simple ETH Bank',
+                description: 'Solidity contracts with Python/Rust backends for secure blockchain transactions.',
+                tech: ['Solidity', 'Python', 'Rust', 'Web3.js', 'Ethereum'],
+                links: [
+                  { label: 'Contracts', url: 'https://github.com/Haxsen/solidity_blockchain_contracts' },
+                  { label: 'Python Backend', url: 'https://github.com/Haxsen/python_rest_api' },
+                  { label: 'Rust Backend', url: 'https://github.com/Haxsen/rust_blockchain_service' }
+                ]
               },
               {
                 title: '[Sample] Trivia Game',
-                description: 'A simple trivia game showcasing full-stack development capabilities.',
-                tech: ['FrontEnd using React', 'Backend using .NET', 'Fullstack usingUnity + C#']
+                description: 'Full-stack trivia game with Unity, React frontend, and .NET backend.',
+                tech: ['Unity', 'C#', 'React', '.NET', 'SQL'],
+                links: [
+                  { label: 'Unity + C#', url: 'https://github.com/Haxsen/TriviaGameSampleUnityCSharpDotnet' },
+                  { label: 'Frontend ReactJS', url: 'https://github.com/Haxsen/TriviaWebGameFrontend' },
+                  { label: 'Backend .NET', url: 'https://github.com/Haxsen/TriviaWebGameBackend' }
+                ]
+              },
+              {
+                title: 'Puffer Withdrawal Service',
+                description: 'Automated service for calling smart contracts on schedules for secure transactions.',
+                tech: ['TypeScript', 'Express', 'Swagger', 'Web3.js', 'AWS ECR + ECS', 'AWS Secrets Manager', 'AWS Load Balancer', 'AWS CloudWatch'],
+                links: [
+                  { label: 'Documentation', url: 'https://docs.puffer.fi/protocol/overview#puffer-walkthrough-' }
+                ]
+              },
+              {
+                title: 'Puffer UniFi',
+                description: 'L2 rollup blockchain for scaling Ethereum with focus on security and performance.',
+                tech: ['AWS EC2', 'AWS ACM', 'Nginx', 'Docker', 'Optimism L2', 'Blockscout'],
+                links: [
+                  { label: 'Explorer', url: 'https://testnet-unifi-explorer.puffer.fi/' },
+                  { label: 'Website', url: 'https://www.puffer.fi/unifi' }
+                ]
+              },
+              {
+                title: 'GitHub Importer',
+                description: 'XWiki extension for importing GitHub pages and wikis with multi-syntax support.',
+                tech: ['Java', 'Git', 'Jira', 'Jenkins CI/CD', 'jQuery', 'Apache Velocity'],
+                links: [
+                  { label: 'Source Code', url: 'https://github.com/xwiki-contrib/application-github-importer' }
+                ]
+              },
+              {
+                title: 'World War 0x',
+                description: 'Cross-platform shooter game with Solana blockchain features and NFTs.',
+                tech: ['Solana Blockchain', 'Helius RPC', 'NFTs', 'PHP', 'C#', 'Unity Engine', 'Git', 'SourceTree', 'Photon Networking', 'MySQL', 'Smart Contracts', 'Web3 Wallets', 'DAO', 'IPFS', 'Metaplex Core'],
+                links: [
+                  { label: 'Website', url: 'https://www.worldwar0x.com/' }
+                ]
+              },
+              {
+                title: 'Scooby Doo Funfair Scare',
+                description: 'WebGL adventure game developed for Cartoon Network UK.',
+                tech: ['C#', 'Unity3D', 'JSLib', 'Git', 'SourceTree', 'Addressables'],
+                links: [
+                  { label: 'Play Game', url: 'https://www.boomerangtv.co.uk/games/scooby-doo-funfair-scare' }
+                ]
               }
             ].map((project, index) => (
               <div 
@@ -220,8 +271,36 @@ and cross-platform apps, who has worked in B2B/B2C/Web3 organizations actively t
                     </span>
                   ))}
                 </div>
+                {project.links && (
+                  <div className="mt-4 flex flex-wrap gap-4">
+                    {project.links.map((link, i) => (
+                      <a
+                        key={i}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 underline transition-colors"
+                      >
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section id="education" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">
+            Education
+          </h2>
+          <div className="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg border border-gray-100 dark:border-gray-600">
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Bachelor of Science - Computer Engineering</h3>
+            <p className="text-primary-600 dark:text-primary-400 font-medium">National University of Sciences and Technology (NUST), Islamabad, Pakistan</p>
           </div>
         </div>
       </section>
@@ -254,14 +333,14 @@ and cross-platform apps, who has worked in B2B/B2C/Web3 organizations actively t
               </svg>
         </a>
         <a
-              href="https://github.com/haxsen"
+              href="https://t.me/haxsen"
           target="_blank"
           rel="noopener noreferrer"
               className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors transform hover:scale-110"
             >
-              <span className="sr-only">GitHub</span>
+              <span className="sr-only">Telegram</span>
               <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.91-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
               </svg>
             </a>
           </div>

@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Hassān Ali - Software Engineer",
-  description: "Portfolio of Hassān Ali, a Software Engineer with over 5 years of experience in building scalable web applications.",
+  description: "Portfolio of Hassān Ali, a Software Engineer with over 6 years of experience in building scalable web applications.",
 };
 
 export default function RootLayout({
@@ -35,6 +35,9 @@ export default function RootLayout({
                 </a>
                 <a href="#projects" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
                   Projects
+                </a>
+                <a href="#education" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+                  Education
                 </a>
                 <a href="#contact" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
                   Contact
