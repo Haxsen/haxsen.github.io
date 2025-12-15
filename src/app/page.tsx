@@ -23,16 +23,23 @@ export default function Home() {
           </p>
           <div className="flex justify-center gap-4 animate-slide-up" style={{ animationDelay: '0.6s' }}>
             <a
-              href="#contact"
-              className="px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-primary-500/25"
+              href="/HassanAliEngineerSoftwareCloud.pdf"
+              download="HassanAliEngineerSoftwareCloud.pdf"
+              className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-green-500/25"
             >
-              Contact Me
-          </a>
-          <a
+              Download CV
+            </a>
+            <a
               href="#experience"
               className="px-6 py-3 border-2 border-primary-200 dark:border-primary-800 text-primary-600 dark:text-primary-400 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all transform hover:scale-105"
             >
               View Experience
+            </a>
+            <a
+              href="#contact"
+              className="px-6 py-3 border-2 border-primary-200 dark:border-primary-800 text-primary-600 dark:text-primary-400 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all transform hover:scale-105"
+            >
+              Contact Me
             </a>
           </div>
         </div>
