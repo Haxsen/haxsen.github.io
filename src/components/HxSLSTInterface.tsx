@@ -12,8 +12,7 @@ declare global {
 
 const CONTRACT_ADDRESS = '0xac5b65150c6265b300f231036f684921deaa95d2'
 
-export default function HxSLSTInterface() {
-  const [account, setAccount] = useState<string | null>(null)
+export default function HxSLSTInterface({ account }: { account: string }) {
   const [balance, setBalance] = useState<string>('0')
   const [depositAmount, setDepositAmount] = useState<string>('')
   const [isLoading, setIsLoading] = useState(false)
@@ -46,20 +45,6 @@ export default function HxSLSTInterface() {
       }
     } catch (error) {
       console.error('Error fetching balance:', error)
-    }
-  }
-
-  const connectWallet = async () => {
-    try {
-      const accounts = await window.ethereum?.request({
-        method: 'eth_requestAccounts'
-      })
-      if (accounts && accounts[0]) {
-        setAccount(accounts[0])
-      }
-    } catch (error) {
-      console.error('Error connecting wallet:', error)
-      setTxStatus('Failed to connect wallet')
     }
   }
 
@@ -174,20 +159,6 @@ export default function HxSLSTInterface() {
     } finally {
       setIsLoading(false)
     }
-  }
-
-  if (!account) {
-    return (
-      <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
-        <h3 className="text-xl font-semibold mb-4">hxSLST Interface</h3>
-        <button
-          onClick={connectWallet}
-          className="w-full px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all"
-        >
-          Connect Wallet
-        </button>
-      </div>
-    )
   }
 
   return (

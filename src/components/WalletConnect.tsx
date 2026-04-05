@@ -10,9 +10,8 @@ declare global {
   }
 }
 
-export default function WalletConnect() {
+export default function WalletConnect({ onConnect, account }: { onConnect: (account: string) => void, account: string | null }) {
   const [isConnecting, setIsConnecting] = useState(false)
-  const [account, setAccount] = useState<string | null>(null)
 
   const connectWallet = async () => {
     if (typeof window.ethereum !== 'undefined') {
@@ -21,7 +20,7 @@ export default function WalletConnect() {
         const accounts = await window.ethereum.request({
           method: 'eth_requestAccounts'
         })
-        setAccount(accounts[0])
+        onConnect(accounts[0])
       } catch (error) {
         console.error('Error connecting wallet:', error)
       } finally {
@@ -40,7 +39,7 @@ export default function WalletConnect() {
           {account.slice(0, 6)}...{account.slice(-4)}
         </span>
         <button 
-          onClick={() => setAccount(null)}
+          onClick={() => onConnect('')}
           className="text-sm text-blue-400 hover:text-blue-300"
         >
           Disconnect

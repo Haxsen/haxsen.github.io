@@ -1,7 +1,11 @@
+'use client'
+
+import { useState } from 'react'
 import WalletConnect from '@/components/WalletConnect'
 import HxSLSTInterface from '@/components/HxSLSTInterface'
 
 export default function Home() {
+  const [account, setAccount] = useState<string | null>(null)
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 text-white">
       {/* Hero Section */}
@@ -35,12 +39,8 @@ export default function Home() {
             <p className="text-sm text-blue-400 mt-2">HaxsensSmartLST (hxSLST)</p>
           </div>
           
-          <div className="max-w-md mx-auto mb-8">
-            <HxSLSTInterface />
-          </div>
-          
           <div className="flex flex-col sm:flex-row justify-center gap-6 mb-16">
-            <WalletConnect />
+            <WalletConnect onConnect={setAccount} account={account} />
             <a
               href="https://eth-staking-analytics-frontend.onrender.com/"
               target="_blank"
@@ -50,6 +50,12 @@ export default function Home() {
               View Dashboard
             </a>
           </div>
+          
+          {account && (
+            <div className="max-w-md mx-auto mb-8">
+              <HxSLSTInterface account={account} />
+            </div>
+          )}
           
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl border border-slate-700">
