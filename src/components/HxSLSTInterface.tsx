@@ -1,14 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-
-declare global {
-  interface Window {
-    ethereum?: {
-      request: (args: { method: string; params?: any[] }) => Promise<any>
-    }
-  }
-}
+import { useState, useEffect, useCallback } from 'react'
 
 const CONTRACT_ADDRESS = '0xac5b65150c6265b300f231036f684921deaa95d2'
 
@@ -18,17 +10,11 @@ export default function HxSLSTInterface({ account }: { account: string }) {
   const [isLoading, setIsLoading] = useState(false)
   const [txStatus, setTxStatus] = useState<string>('')
 
-  useEffect(() => {
-    if (account) {
-      fetchBalance()
-    }
-  }, [account])
-
-  const fetchBalance = async () => {
+  const fetchBalance = useCallback(async () => {
     if (!account) return
     
     try {
-      const result = await window.ethereum?.request({
+      const result = await (window.ethereum?.request as (args: { method: string; params: unknown[] }) => Promise<unknown>)({
         method: 'eth_call',
         params: [
           {
@@ -37,7 +23,7 @@ export default function HxSLSTInterface({ account }: { account: string }) {
           },
           'latest'
         ]
-      })
+      }) as unknown as string
       
       if (result) {
         const balanceWei = parseInt(result, 16)
@@ -46,7 +32,13 @@ export default function HxSLSTInterface({ account }: { account: string }) {
     } catch (error) {
       console.error('Error fetching balance:', error)
     }
-  }
+  }, [account])
+
+  useEffect(() => {
+    if (account) {
+      fetchBalance()
+    }
+  }, [account, fetchBalance])
 
   const deposit = async () => {
     if (!account || !depositAmount) return
@@ -58,7 +50,7 @@ export default function HxSLSTInterface({ account }: { account: string }) {
       const amountWei = (parseFloat(depositAmount) * 1e18).toString(16).padStart(64, '0')
       const minShares = '0' // Accept any amount of shares
       
-      const txHash = await window.ethereum?.request({
+      const txHash = await (window.ethereum?.request as (args: { method: string; params: unknown[] }) => Promise<unknown>)({
         method: 'eth_sendTransaction',
         params: [
           {
@@ -68,17 +60,17 @@ export default function HxSLSTInterface({ account }: { account: string }) {
             data: '0xa0b3d800' + account.slice(2).padStart(64, '0') + minShares.padStart(64, '0') // depositETH(address,uint256)
           }
         ]
-      })
+      }) as string
       
       setTxStatus(`Transaction sent: ${txHash}`)
       
       // Wait for confirmation
       let receipt = null
       while (!receipt) {
-        receipt = await window.ethereum?.request({
+        receipt = await (window.ethereum?.request as (args: { method: string; params: unknown[] }) => Promise<unknown>)({
           method: 'eth_getTransactionReceipt',
           params: [txHash]
-        })
+        }) as { status: string }
         await new Promise(resolve => setTimeout(resolve, 2000))
       }
       
@@ -104,7 +96,7 @@ export default function HxSLSTInterface({ account }: { account: string }) {
     setTxStatus('Withdrawing...')
     
     try {
-      const balanceResult = await window.ethereum?.request({
+      const balanceResult = await (window.ethereum?.request as (args: { method: string; params: unknown[] }) => Promise<unknown>)({
         method: 'eth_call',
         params: [
           {
@@ -113,7 +105,7 @@ export default function HxSLSTInterface({ account }: { account: string }) {
           },
           'latest'
         ]
-      })
+      }) as unknown as string
       
       const balanceWei = balanceResult ? parseInt(balanceResult, 16) : 0
       if (balanceWei === 0) {
@@ -124,7 +116,7 @@ export default function HxSLSTInterface({ account }: { account: string }) {
       
       const amountHex = balanceWei.toString(16).padStart(64, '0')
       
-      const txHash = await window.ethereum?.request({
+      const txHash = await (window.ethereum?.request as (args: { method: string; params: unknown[] }) => Promise<unknown>)({
         method: 'eth_sendTransaction',
         params: [
           {
@@ -133,17 +125,17 @@ export default function HxSLSTInterface({ account }: { account: string }) {
             data: '0x2e1a7d4d' + amountHex // withdrawLSTs(uint256)
           }
         ]
-      })
+      }) as string
       
       setTxStatus(`Withdrawal sent: ${txHash}`)
       
       // Wait for confirmation
       let receipt = null
       while (!receipt) {
-        receipt = await window.ethereum?.request({
+        receipt = await (window.ethereum?.request as (args: { method: string; params: unknown[] }) => Promise<unknown>)({
           method: 'eth_getTransactionReceipt',
           params: [txHash]
-        })
+        }) as { status: string }
         await new Promise(resolve => setTimeout(resolve, 2000))
       }
       

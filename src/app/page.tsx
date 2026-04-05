@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import WalletConnect from '@/components/WalletConnect'
 import HxSLSTInterface from '@/components/HxSLSTInterface'
 
@@ -13,10 +14,12 @@ export default function Home() {
         <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
         <div className="max-w-6xl mx-auto text-center relative z-10">
           <div className="mb-4 mt-12 relative flex justify-center">
-            <img 
+            <Image 
               src="https://raw.githubusercontent.com/Haxsen/haxsen.github.io/refs/heads/master/hxSLST.svg" 
               alt="hxSLST Logo" 
-              className="w-20 h-20 rounded-md"
+              width={80}
+              height={80}
+              className="rounded-md"
             />
           </div>
           
@@ -136,6 +139,7 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold mb-3">Dual Strategy</h3>
+              <p className="text-sm text-gray-400">Don&apos;t have ETH? Get started with just 0.01 ETH.</p>
               <p className="text-gray-400">tETH stability + ankrETH alpha for optimized returns</p>
             </div>
             
@@ -295,7 +299,7 @@ export default function Home() {
                   </div>
                   <div>
                     <h4 className="font-semibold mb-2">Connect Wallet</h4>
-                    <p className="text-gray-400">Click "Connect Wallet" and choose MetaMask or WalletConnect</p>
+                    <p className="text-gray-400">Click &quot;Connect Wallet&quot; and choose MetaMask or WalletConnect</p>
                   </div>
                 </div>
                 
@@ -416,7 +420,7 @@ export default function Home() {
             </a>
           </div>
           <p className="text-sm text-blue-200">
-            '<b>hxSLST</b>' is a DeFi protocol. You are trusting the protocol to manage your funds. DYOR/NFA.
+            &quot;<b>hxSLST</b>&quot; is a DeFi protocol. You are trusting the protocol to manage your funds. DYOR/NFA.
           </p>
         </div>
       </section>

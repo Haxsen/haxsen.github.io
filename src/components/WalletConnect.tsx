@@ -2,14 +2,6 @@
 
 import { useState } from 'react'
 
-declare global {
-  interface Window {
-    ethereum?: {
-      request: (args: { method: string }) => Promise<string[]>
-    }
-  }
-}
-
 export default function WalletConnect({ onConnect, account }: { onConnect: (account: string) => void, account: string | null }) {
   const [isConnecting, setIsConnecting] = useState(false)
 
@@ -17,9 +9,9 @@ export default function WalletConnect({ onConnect, account }: { onConnect: (acco
     if (typeof window.ethereum !== 'undefined') {
       setIsConnecting(true)
       try {
-        const accounts = await window.ethereum.request({
+        const accounts = await (window.ethereum?.request as (args: { method: string }) => Promise<string[]>)({
           method: 'eth_requestAccounts'
-        })
+        }) as string[]
         onConnect(accounts[0])
       } catch (error) {
         console.error('Error connecting wallet:', error)

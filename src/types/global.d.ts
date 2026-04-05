@@ -1,5 +1,7 @@
 declare global {
   interface Window {
-    ethereum?: any
+    ethereum?: {
+      request: (args: { method: string; params?: unknown[] } | { method: string }) => Promise<unknown | string[]>
+    }
   }
 }
