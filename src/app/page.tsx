@@ -1,357 +1,418 @@
+import WalletConnect from '@/components/WalletConnect'
+import HxSLSTInterface from '@/components/HxSLSTInterface'
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
+    <main className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 text-white">
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-        <div className="max-w-4xl mx-auto text-center relative z-10 animate-fade-in">
-          {/* <div className="mb-8">
-            <div className="w-40 h-40 mx-auto rounded-full bg-gradient-to-r from-primary-500 to-primary-700 p-1">
-              <div className="w-full h-full rounded-full bg-white dark:bg-gray-900 flex items-center justify-center">
-                <span className="text-4xl font-bold text-primary-600 dark:text-primary-400">Haxsen</span>
-              </div>
-            </div>
-          </div> */}
-          <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-6 animate-slide-up">
-            Hassān Ali
+        <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
+        <div className="max-w-6xl mx-auto text-center relative z-10">
+          <div className="mb-4 mt-12 relative flex justify-center">
+            <img 
+              src="https://raw.githubusercontent.com/Haxsen/haxsen.github.io/refs/heads/master/hxSLST.svg" 
+              alt="hxSLST Logo" 
+              className="w-20 h-20 rounded-md"
+            />
+          </div>
+          
+          <h1 className="text-4xl sm:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            HaxsensSmartLST
           </h1>
-          <h2 className="text-2xl sm:text-3xl text-gray-600 dark:text-gray-300 mb-8 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            Software Engineer
+          
+          <h2 className="text-xl sm:text-2xl text-gray-300 mb-8">
+            One token. The best staking yields. Zero effort.
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 animate-slide-up" style={{ animationDelay: '0.4s' }}>
-          Computer & Software Engineer with over 6 years of experience in developing backend web services, scalable infrastructure, and cross-platform apps, working in B2B/B2C/Web3 organizations. An individual who values teamwork and fosters a positive environment. Well-versed in code best practices, software architecture, operations, and production.
+          
+          <p className="text-lg text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+            Invest your ETH into our secure vault system and earn optimized yields through 
+            strategic DeFi protocols. Built with security, transparency, and efficiency at its core.
           </p>
-          <div className="flex justify-center gap-4 animate-slide-up" style={{ animationDelay: '0.6s' }}>
+          
+          <div className="bg-slate-800/50 backdrop-blur-sm p-4 rounded-xl border border-slate-700 mb-8 max-w-2xl mx-auto">
+            <p className="text-sm text-gray-500 mb-2">Contract Address</p>
+            <p className="text-xs text-gray-400 font-mono break-all">0xac5b65150c6265b300f231036f684921deaa95d2</p>
+            <p className="text-sm text-blue-400 mt-2">HaxsensSmartLST (hxSLST)</p>
+          </div>
+          
+          <div className="max-w-md mx-auto mb-8">
+            <HxSLSTInterface />
+          </div>
+          
+          <div className="flex flex-col sm:flex-row justify-center gap-6 mb-16">
+            <WalletConnect />
             <a
-              href="/HassanAliEngineerSoftwareCloud.pdf"
-              download="HassanAliEngineerSoftwareCloud.pdf"
-              className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-green-500/25"
+              href="https://eth-staking-analytics-frontend.onrender.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-4 border-2 border-blue-500 text-blue-400 rounded-xl hover:bg-blue-500/10 transition-all transform hover:scale-105 font-semibold text-lg"
             >
-              Download CV
-            </a>
-            <a
-              href="#experience"
-              className="px-6 py-3 border-2 border-primary-200 dark:border-primary-800 text-primary-600 dark:text-primary-400 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all transform hover:scale-105"
-            >
-              View Experience
-            </a>
-            <a
-              href="#contact"
-              className="px-6 py-3 border-2 border-primary-200 dark:border-primary-800 text-primary-600 dark:text-primary-400 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all transform hover:scale-105"
-            >
-              Contact Me
+              View Dashboard
             </a>
           </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      {/* <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900 relative">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-            About Me
-          </h2>
-          <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-lg">
-            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            ● Computer & Software Engineer with over 5 years of experience in developing web services, scalable infrastructure 
-and cross-platform apps, who has worked in B2B/B2C/Web3 organizations actively transitioning to Blockchain. 
-● An individual who owns the company, values and assists the team providing a wonderful environment. 
-● Well experienced at code best practices, software architecture, operations and production.
-            </p>
-          </div>
-        </div>
-      </section> */}
-
-      {/* Skills Section */}
-      <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">
-            Technical Skills
-          </h2>
-          <div className="space-y-8">
-            <div className="bg-white dark:bg-gray-700 rounded-xl shadow-lg p-6 border border-gray-100 dark:border-gray-600">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Programming</h3>
-              <p className="text-gray-600 dark:text-gray-300">C#, Python, TypeScript, Java, JavaScript, Go, Rust, Solidity, Move, PHP, Bash/Shell</p>
+          
+          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl border border-slate-700">
+              <div className="text-3xl font-bold text-green-400 mb-2">APY: 4%+</div>
+              <div className="text-gray-400">Annual Percentage Yield</div>
             </div>
-
-            <div className="bg-white dark:bg-gray-700 rounded-xl shadow-lg p-6 border border-gray-100 dark:border-gray-600">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Databases</h3>
-              <p className="text-gray-600 dark:text-gray-300">PostgreSQL, MySQL, MongoDB, SQLite</p>
+            <div className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl border border-slate-700">
+              <div className="text-3xl font-bold text-blue-400 mb-2">tETH + ankrETH</div>
+              <div className="text-gray-400">Underlying Assets</div>
             </div>
-
-            <div className="bg-white dark:bg-gray-700 rounded-xl shadow-lg p-6 border border-gray-100 dark:border-gray-600">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Blockchain</h3>
-              <p className="text-gray-600 dark:text-gray-300">Wallets, RPC, Webhooks, Tenderly, Execution/Consensus</p>
-            </div>
-
-            <div className="bg-white dark:bg-gray-700 rounded-xl shadow-lg p-6 border border-gray-100 dark:border-gray-600">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Technologies</h3>
-              <p className="text-gray-600 dark:text-gray-300">Agile, Git, Vim/Nano, JetBrains, Postman/HTTPie, REST APIs, Next.js, React, Node.js, .NET, Jira, Unity, Redis</p>
-            </div>
-
-            <div className="bg-white dark:bg-gray-700 rounded-xl shadow-lg p-6 border border-gray-100 dark:border-gray-600">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">DevOps</h3>
-              <p className="text-gray-600 dark:text-gray-300">Docker, AWS, GCP, Terraform, Nginx, GitHub Actions, Rancher, Kubernetes, GitLab/Jenkins CI/CD, Azure</p>
-            </div>
-
-            <div className="bg-white dark:bg-gray-700 rounded-xl shadow-lg p-6 border border-gray-100 dark:border-gray-600">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Best Practices</h3>
-              <p className="text-gray-600 dark:text-gray-300">SOLID Principles, Event-Driven Architecture, Observer, Builder, State Machine Patterns</p>
+            <div className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl border border-slate-700">
+              <div className="text-3xl font-bold text-purple-400 mb-2">ERC-4626</div>
+              <div className="text-gray-400">Vault Standard</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Experience Section */}
-      <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">
-            Experience
-          </h2>
-          <div className="space-y-8">
-            {[
-              {
-                title: 'Software Engineer - Backend/DevOps',
-                company: 'Puffer Finance',
-                companyUrl: 'https://puffer.fi',
-                period: 'Mar 2024 - Present',
-                description: 'Designed and implemented full-stack solutions to automate ETH withdrawals, resolving critical liquidity issues.\nSaved over $5,000 monthly by optimizing AWS infrastructure and migrating backend to GCP using Terraform IaC.\nDeveloped a DB access management Slack app for employee approvals.\nManaged 7+ deployments across staging and production (ECS, EC2, Lambda).\nDeployed UniFi Testnet using Optimism L2 rollup, Blockscout, and Docker Compose.',
-                tech: 'Python, TypeScript, Node.js, Next.js, Express, PostgreSQL, Docker, AWS (ECS, EC2, Lambda), GCP, Terraform, GitHub Actions CI/CD, Ethers.js, Web3.js, Ethereum, DeFi, EigenLayer, Liquid Staking, Oracles, Multisig, Rollups, Smart Contracts'
-              },
-              {
-                title: 'Software Engineer - Backend/DevOps',
-                company: 'Curfluffle',
-                companyUrl: 'https://www.worldwar0x.com/',
-                period: 'Jan 2023 - Mar 2024',
-                description: 'Developed and released World War 0x for PC, WebGL, iOS, and Android platforms.\nLed a team of artists, designers, and developers.\nImproved performance by 135% through runtime optimization.\nEnhanced security with PHP backend and MySQL database.',
-                tech: 'Solana Blockchain, Helius RPC, NFTs, PHP, C#, Unity3D, Git, SourceTree, Photon Networking, MySQL, Smart Contracts, Web3 Wallets, DAO, IPFS, Metaplex Core'
-              },
-              {
-                title: 'Computer Engineer - Fullstack',
-                company: 'Govt of Pakistan',
-                companyUrl: 'https://www.rde.gov.pk/Detail/YzljOTdlZTgtOTUwYi00OGNiLWEzMjgtNDBjN2VhMTExNTU4',
-                period: 'Oct 2020 - Jan 2023',
-                description: 'Designed 2 simulators (ATGM & Sniper Rifle) with custom Arduino hardware and sensors.\nAchieved 95%+ user satisfaction, saving over $1M.\nIntegrated SQLite database for user stats and leaderboards.',
-                tech: 'C++, Arduino IDE, C#, Unity3D, Git, SQL, .NET Framework'
-              },
-              {
-                title: 'Freelance Engineer - Fullstack/Games',
-                company: 'Colto SRL',
-                companyUrl: 'https://www.colto.com/',
-                period: 'Oct 2021 - Jan 2023',
-                description: 'Assisted on Love Diana Dressup and CKN Toys CarHero.\nDeveloped Scooby Doo Funfair Scare for Cartoon Network UK.\nReduced loading times by 5x using Addressables, achieving 93% client satisfaction.',
-                tech: 'C#, Unity3D, JSLib, Git, SourceTree, Addressables'
-              },
-              {
-                title: 'Intern',
-                company: 'Google Summer of Code with XWiki',
-                companyUrl: 'https://summerofcode.withgoogle.com/archive/2020/projects/4840319801098240/',
-                period: 'May 2020 - Sep 2020',
-                description: 'Built GitHub Importer extension for XWiki to import GitHub pages and wikis.\nSupported Markdown with 3 syntax conversions (XWiki, MediaWiki, Creole).\nEnsured backward compatibility with 87% test coverage.',
-                tech: 'Java, Git, Jira, Jenkins CI/CD, jQuery, Apache Velocity'
-              }
-            ].map((exp, index) => (
-              <div 
-                key={index} 
-                className="bg-gray-50 dark:bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1"
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{exp.title}</h3>
-                <p className="text-primary-600 dark:text-primary-400 font-medium">
-                  {exp.companyUrl ? (
-                    <a
-                      href={exp.companyUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:underline"
-                    >
-                      {exp.company}
-                    </a>
-                  ) : (
-                    exp.company
-                  )}
-                </p>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">{exp.period}</p>
-                <p className="text-gray-600 dark:text-gray-300 whitespace-pre-line">{exp.description}</p>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">Technologies: {exp.tech}</p>
+      {/* How It Works */}
+      <section id="how-it-works" className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16">How It Works</h2>
+          
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                </svg>
               </div>
-            ))}
+              <h3 className="text-xl font-semibold mb-3">1. Deposit ETH</h3>
+              <p className="text-gray-400">Connect your wallet and deposit Ether into the vault</p>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-3">2. Receive smartLST</h3>
+              <p className="text-gray-400">Get smartLST shares representing your deposit</p>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-3">3. Auto-Optimized</h3>
+              <p className="text-gray-400">Brain service optimizes yields through rebalancing</p>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-3">4. Withdraw Anytime</h3>
+              <p className="text-gray-400">Withdraw your funds plus earnings at any time</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">
-            Projects
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                title: '[Sample] LST Analytics Dashboard',
-                description: 'Go backend + Next.js frontend + Terraform infra for Ethereum staking analytics.',
-                tech: ['Go', 'Next.js', 'Terraform', 'PostgreSQL', 'AWS'],
-                links: [
-                  { label: 'Live Website', url: 'https://eth-staking-analytics-frontend.onrender.com/' },
-                  { label: 'Source Code', url: 'https://github.com/Haxsen/HxnETHstakingAnalyticsApp' }
-                ]
-              },
-              {
-                title: '[Sample] Simple ETH Bank',
-                description: 'Solidity contracts with Python/Rust backends for secure blockchain transactions.',
-                tech: ['Solidity', 'Python', 'Rust', 'Web3.js', 'Ethereum'],
-                links: [
-                  { label: 'Contracts', url: 'https://github.com/Haxsen/solidity_blockchain_contracts' },
-                  { label: 'Python Backend', url: 'https://github.com/Haxsen/python_rest_api' },
-                  { label: 'Rust Backend', url: 'https://github.com/Haxsen/rust_blockchain_service' }
-                ]
-              },
-              {
-                title: '[Sample] Trivia Game',
-                description: 'Full-stack trivia game with Unity, React frontend, and .NET backend.',
-                tech: ['Unity', 'C#', 'React', '.NET', 'SQL'],
-                links: [
-                  { label: 'Unity + C#', url: 'https://github.com/Haxsen/TriviaGameSampleUnityCSharpDotnet' },
-                  { label: 'Frontend ReactJS', url: 'https://github.com/Haxsen/TriviaWebGameFrontend' },
-                  { label: 'Backend .NET', url: 'https://github.com/Haxsen/TriviaWebGameBackend' }
-                ]
-              },
-              {
-                title: 'Puffer Withdrawal Service',
-                description: 'Automated service for calling smart contracts on schedules for secure transactions.',
-                tech: ['TypeScript', 'Express', 'Swagger', 'Web3.js', 'AWS ECR + ECS', 'AWS Secrets Manager', 'AWS Load Balancer', 'AWS CloudWatch'],
-                links: [
-                  { label: 'Documentation', url: 'https://docs.puffer.fi/protocol/overview#puffer-walkthrough-' }
-                ]
-              },
-              {
-                title: 'Puffer UniFi',
-                description: 'L2 rollup blockchain for scaling Ethereum with focus on security and performance.',
-                tech: ['AWS EC2', 'AWS ACM', 'Nginx', 'Docker', 'Optimism L2', 'Blockscout'],
-                links: [
-                  { label: 'Explorer', url: 'https://testnet-unifi-explorer.puffer.fi/' },
-                  { label: 'Website', url: 'https://www.puffer.fi/unifi' }
-                ]
-              },
-              {
-                title: 'GitHub Importer',
-                description: 'XWiki extension for importing GitHub pages and wikis with multi-syntax support.',
-                tech: ['Java', 'Git', 'Jira', 'Jenkins CI/CD', 'jQuery', 'Apache Velocity'],
-                links: [
-                  { label: 'Source Code', url: 'https://github.com/xwiki-contrib/application-github-importer' }
-                ]
-              },
-              {
-                title: 'World War 0x',
-                description: 'Cross-platform shooter game with Solana blockchain features and NFTs.',
-                tech: ['Solana Blockchain', 'Helius RPC', 'NFTs', 'PHP', 'C#', 'Unity Engine', 'Git', 'SourceTree', 'Photon Networking', 'MySQL', 'Smart Contracts', 'Web3 Wallets', 'DAO', 'IPFS', 'Metaplex Core'],
-                links: [
-                  { label: 'Website', url: 'https://www.worldwar0x.com/' }
-                ]
-              },
-              {
-                title: 'Scooby Doo Funfair Scare',
-                description: 'WebGL adventure game developed for Cartoon Network UK.',
-                tech: ['C#', 'Unity3D', 'JSLib', 'Git', 'SourceTree', 'Addressables'],
-                links: [
-                  { label: 'Play Game', url: 'https://www.boomerangtv.co.uk/games/scooby-doo-funfair-scare' }
-                ]
-              }
-            ].map((project, index) => (
-              <div 
-                key={index} 
-                className="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1"
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                  {project.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-sm"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+      {/* Features Section */}
+      <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-800/50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16">Why Choose SmartLST?</h2>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-slate-900/50 p-8 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors">
+              <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Dual Strategy</h3>
+              <p className="text-gray-400">tETH stability + ankrETH alpha for optimized returns</p>
+            </div>
+            
+            <div className="bg-slate-900/50 p-8 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors">
+              <div className="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Auto-Rebalancing</h3>
+              <p className="text-gray-400">Brain service optimizes yields through strategic rebalancing</p>
+            </div>
+            
+            <div className="bg-slate-900/50 p-8 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors">
+              <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-3">MEV Protection</h3>
+              <p className="text-gray-400">Milkman integration protects against front-running attacks</p>
+            </div>
+            
+            <div className="bg-slate-900/50 p-8 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors">
+              <div className="w-12 h-12 bg-yellow-500/20 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Gas Optimized</h3>
+              <p className="text-gray-400">Low gas fees through batch operations and efficient design</p>
+            </div>
+            
+            <div className="bg-slate-900/50 p-8 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors">
+              <div className="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Real-time Analytics</h3>
+              <p className="text-gray-400">Track your investments with comprehensive dashboard</p>
+            </div>
+            
+            <div className="bg-slate-900/50 p-8 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors">
+              <div className="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Transparent</h3>
+              <p className="text-gray-400">All transactions on-chain with full visibility</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section id="how-it-works" className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16">How It Works</h2>
+          
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                1
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Connect Wallet</h3>
+              <p className="text-gray-400">Connect your Ethereum wallet using MetaMask or WalletConnect</p>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                2
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Deposit ETH</h3>
+              <p className="text-gray-400">Deposit Ether into the vault with one simple transaction</p>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                3
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Earn Rewards</h3>
+              <p className="text-gray-400">Your ETH is automatically deployed to earn yield</p>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                4
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Withdraw Anytime</h3>
+              <p className="text-gray-400">Withdraw your funds plus earnings at any time</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Token Details */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16">Token Details</h2>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="bg-slate-800/50 p-8 rounded-xl border border-slate-700">
+              <h3 className="text-xl font-semibold mb-4">hxSLST Token</h3>
+              <p className="text-gray-400 mb-4">ERC-4626 vault shares representing your deposit</p>
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <span className="text-gray-500">Name:</span>
+                  <span className="text-blue-400">HaxsensSmartLST</span>
                 </div>
-                {project.links && (
-                  <div className="mt-4 flex flex-wrap gap-4">
-                    {project.links.map((link, i) => (
-                      <a
-                        key={i}
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 underline transition-colors"
-                      >
-                        {link.label}
-                      </a>
-                    ))}
-                  </div>
-                )}
+                <div className="flex justify-between">
+                  <span className="text-gray-500">Symbol:</span>
+                  <span className="text-green-400">hxSLST</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-500">Standard:</span>
+                  <span className="text-purple-400">ERC-4626</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-500">Asset:</span>
+                  <span className="text-yellow-400">ETH</span>
+                </div>
               </div>
-            ))}
+            </div>
+            
+            <div className="bg-slate-800/50 p-8 rounded-xl border border-slate-700">
+              <h3 className="text-xl font-semibold mb-4">Underlying Assets</h3>
+              <p className="text-gray-400 mb-4">Strategic mix of liquid staking tokens</p>
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <span className="text-gray-500">tETH:</span>
+                  <span className="text-blue-400">100% (start)</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-500">ankrETH:</span>
+                  <span className="text-purple-400">Max 60% TVL</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Education Section */}
-      <section id="education" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">
-            Education
-          </h2>
-          <div className="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg border border-gray-100 dark:border-gray-600">
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Bachelor of Science - Computer Engineering</h3>
-            <p className="text-primary-600 dark:text-primary-400 font-medium">National University of Sciences and Technology (NUST), Islamabad, Pakistan</p>
+      {/* Get Started */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-800/50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16">Get Started</h2>
+          
+          <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+            <div>
+              <h3 className="text-2xl font-semibold mb-6">Step-by-Step Guide</h3>
+              <div className="space-y-6">
+                <div className="flex gap-4">
+                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold">1</span>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-2">Connect Wallet</h4>
+                    <p className="text-gray-400">Click "Connect Wallet" and choose MetaMask or WalletConnect</p>
+                  </div>
+                </div>
+                
+                <div className="flex gap-4">
+                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold">2</span>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-2">Deposit ETH</h4>
+                    <p className="text-gray-400">Enter amount and confirm transaction. No minimum deposit.</p>
+                  </div>
+                </div>
+                
+                <div className="flex gap-4">
+                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold">3</span>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-2">Receive smartLST</h4>
+                    <p className="text-gray-400">Get smartLST shares representing your deposit</p>
+                  </div>
+                </div>
+                
+                <div className="flex gap-4">
+                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold">4</span>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-2">Track & Withdraw</h4>
+                    <p className="text-gray-400">Monitor growth on dashboard, withdraw anytime</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h3 className="text-2xl font-semibold mb-6">Wallet Requirements</h3>
+              <div className="space-y-4">
+                <div className="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
+                  <h4 className="font-semibold mb-2 text-blue-400">Supported Wallets</h4>
+                  <ul className="text-gray-400 space-y-1">
+                    <li>• MetaMask</li>
+                    <li>• WalletConnect</li>
+                    <li>• Any ERC-20 compatible wallet</li>
+                  </ul>
+                </div>
+                
+                <div className="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
+                  <h4 className="font-semibold mb-2 text-green-400">Requirements</h4>
+                  <ul className="text-gray-400 space-y-1">
+                    <li>• Ethereum wallet</li>
+                    <li>• ETH for gas fees</li>
+                    <li>• No minimum deposit</li>
+                  </ul>
+                </div>
+                
+                <div className="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
+                  <h4 className="font-semibold mb-2 text-purple-400">Security Tips</h4>
+                  <ul className="text-gray-400 space-y-1">
+                    <li>• Verify contract address</li>
+                    <li>• Never share private keys</li>
+                    <li>• Use official website only</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
+      {/* FAQ Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">
-            Contact Me
-          </h2>
-          <div className="flex justify-center gap-8">
+          <h2 className="text-4xl font-bold text-center mb-16">Frequently Asked Questions</h2>
+          
+          <div className="space-y-6">
+            <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+              <h3 className="text-xl font-semibold mb-3">What is hxSLST?</h3>
+              <p className="text-gray-400">hxSLST is an ERC-4626 vault that optimizes Ethereum staking yields through strategic allocation to tETH and ankrETH tokens.</p>
+            </div>
+            
+            <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+              <h3 className="text-xl font-semibold mb-3">How does 4%+ APY work?</h3>
+              <p className="text-gray-400">Yield comes from LST appreciation (tETH/ankrETH staking rewards) plus arbitrage opportunities captured by our Brain service.</p>
+            </div>
+            
+            <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+              <h3 className="text-xl font-semibold mb-3">Is my ETH safe?</h3>
+              <p className="text-gray-400">Yes. hxSLST uses audited contracts, MEV protection via Milkman, and multi-signature controls. Underlying LSTs are from established protocols.</p>
+            </div>
+            
+            <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+              <h3 className="text-xl font-semibold mb-3">Can I withdraw anytime?</h3>
+              <p className="text-gray-400">Yes. You can withdraw your funds plus earned yields at any time without lockup periods.</p>
+            </div>
+            
+            <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+              <h3 className="text-xl font-semibold mb-3">What are the risks?</h3>
+              <p className="text-gray-400">Main risks come from underlying LST protocols (tETH and ankrETH). hxSLST adds rebalancing and MEV protection to optimize returns.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 to-purple-600">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-6">Ready to Start Earning?</h2>
+          <p className="text-xl mb-8 text-blue-100">
+            Join hxSLST and earn optimized yields on your ETH.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-6 mb-8">
             <a
-              href="mailto:haxsenmail@gmail.com"
-              className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors transform hover:scale-110"
+              href="/portfolio"
+              className="px-8 py-4 border-2 border-white text-white rounded-xl hover:bg-white/10 transition-all transform hover:scale-105 font-semibold text-lg"
             >
-              <span className="sr-only">Email</span>
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-        </a>
-        <a
-              href="https://www.linkedin.com/in/haxsen/"
-          target="_blank"
-          rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors transform hover:scale-110"
-            >
-              <span className="sr-only">LinkedIn</span>
-              <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3v9zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/>
-              </svg>
-        </a>
-        <a
-              href="https://t.me/haxsen"
-          target="_blank"
-          rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors transform hover:scale-110"
-            >
-              <span className="sr-only">Telegram</span>
-              <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-              </svg>
+              Built by Hassān Ali
             </a>
           </div>
-    </div>
+          <p className="text-sm text-blue-200">
+            '<b>hxSLST</b>' is a DeFi protocol. You are trusting the protocol to manage your funds. DYOR/NFA.
+          </p>
+        </div>
       </section>
     </main>
   )
