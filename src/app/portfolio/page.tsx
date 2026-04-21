@@ -16,8 +16,8 @@ export default function Portfolio() {
           </p>
           <div className="flex justify-center gap-4 animate-slide-up" style={{ animationDelay: '0.6s' }}>
             <a
-              href="/HassanAliEngineerSoftwareCloud.pdf"
-              download="HassanAliEngineerSoftwareCloud.pdf"
+              href="/HassanAliDevopsReliabilityEngineerCV.pdf"
+              download="HassanAliDevopsReliabilityEngineerCV.pdf"
               className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-green-500/25"
             >
               Download CV
