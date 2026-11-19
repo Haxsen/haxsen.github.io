@@ -1,15 +1,18 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { LIVE_AS_OF, LIVE_RECORD, PRE_YEAR, SIM_WINDOW, TRADERS, type TraderStatus } from '@/data/hxquant'
+// Live record section is hidden for now. To show it again, add LIVE_AS_OF and LIVE_RECORD back to this import
+// and uncomment the "Live record" section below.
+import { PRE_YEAR, SIM_WINDOW, TRADERS, type TraderStatus } from '@/data/hxquant'
 import { PERSON } from '@/data/profile'
+import GrowthChart from '@/components/hxquant/GrowthChart'
 import MonthlyHeatmap from '@/components/hxquant/MonthlyHeatmap'
-import { pct } from '@/components/hxquant/format'
+import { pct, usd } from '@/components/hxquant/format'
 import { ArrowIcon, CheckIcon, CrossIcon, MailIcon, TelegramIcon } from '@/components/Icons'
 
 export const metadata: Metadata = {
   title: 'hxQuant · ML crypto trading engine',
   description:
-    'hxQuant buys sudden crypto crashes and sells the rebound, inside your own Bybit account with a trade-only key that cannot withdraw. Seven years of minute-level simulation, a live real-money record, and the risks stated plainly.',
+    'hxQuant buys sudden crypto crashes and sells the rebound, inside your own Bybit account with a trade-only key that cannot withdraw. Tested on seven years of minute-by-minute market data, now in a live pilot.',
   alternates: { canonical: '/hxquant' },
 }
 
@@ -17,6 +20,11 @@ const MAIN = TRADERS.find((t) => t.key === 'acam4') ?? TRADERS[0]
 const BEAR = MAIN.regimes.find((r) => r.label.startsWith('2022'))
 const LAST12 = Object.keys(MAIN.monthly).sort().slice(-12)
 const LAST12_LOSING = LAST12.filter((k) => MAIN.monthly[k] < 0).length
+const LAST12_VALS = LAST12.map((k) => MAIN.monthly[k])
+const LAST12_PROFIT = 10_000 * LAST12_VALS.reduce((a, v) => a + v, 0)
+const LAST12_GAINS = 10_000 * LAST12_VALS.filter((v) => v > 0).reduce((a, v) => a + v, 0)
+const LAST12_LOSSES = 10_000 * LAST12_VALS.filter((v) => v < 0).reduce((a, v) => a + v, 0)
+const PROFITABLE = Object.values(MAIN.monthly).filter((v) => v > 0).length
 const INTEREST = `mailto:${PERSON.email}?subject=hxQuant%20private%20beta`
 
 const STATUS: Record<TraderStatus, { label: string; cls: string }> = {
@@ -66,8 +74,8 @@ export default function HxQuant() {
             <a href={INTEREST} className="btn-primary">
               Join the private beta <ArrowIcon />
             </a>
-            <a href="#live" className="btn-ghost">
-              See the live record
+            <a href="#results" className="btn-ghost">
+              See the results
             </a>
           </div>
 
@@ -191,8 +199,8 @@ export default function HxQuant() {
               </div>
             </div>
             <figcaption className="mt-4 text-sm text-muted">
-              What this does not protect against: trading losses. The key cannot take your money out, but a losing trade still
-              costs money, which is why the results below show the bad numbers as well as the good ones.
+              Custody keeps your money where it is. Returns still depend on the market, which is why the results below show every
+              month, the good and the bad.
             </figcaption>
           </figure>
         </div>
@@ -227,19 +235,24 @@ export default function HxQuant() {
       {/* Results */}
       <section className="border-b border-line py-20 sm:py-24">
         <div className="page">
-          <H2 id="results" eyebrow="Results">Seven years of simulation, with the bad months shown</H2>
+          <H2 id="results" eyebrow="Results · simulated">Profitable in bull markets, bear markets and the latest year</H2>
           <p className="max-w-3xl leading-relaxed text-ink2">
-            In simulation the engine made money in bull markets, through the 2022 bear market and in the most recent year. It also
-            had deep falls, and its real-money record is only weeks old. Every figure here starts a fresh $10,000 each month, so
-            nothing compounds into sizes the market could not absorb.
+            In simulation the engine made money through the 2020 to 2021 bull market, went through the 2022 bear market without a
+            single losing month, and stayed profitable over the most recent twelve months. Every figure here starts a fresh $10,000 each month and takes the profit out, so nothing
+            compounds into sizes the market could not absorb.
           </p>
 
           <dl className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line lg:grid-cols-4">
             {[
               [pct(MAIN.stats.last12), 'average month over the last 12 months'],
-              [BEAR ? pct(BEAR.avgMonth) : '', `average month in the 2022 bear market, ${BEAR?.losing ?? 0} losing months`],
-              [`${MAIN.stats.losingMonths} of ${MAIN.stats.months}`, 'losing months, 2020 to 2026'],
-              [pct(MAIN.stats.largestFall), 'largest fall from a peak, 2020 to 2026'],
+              [
+                BEAR ? pct(BEAR.avgMonth) : '',
+                BEAR && BEAR.losing === 0
+                  ? 'average month in the 2022 bear market, with no losing month'
+                  : `average month in the 2022 bear market, ${BEAR?.losing ?? 0} losing months`,
+              ],
+              [`${PROFITABLE} of ${MAIN.stats.months}`, 'months profitable, Sep 2020 to Sep 2026'],
+              [usd(LAST12_PROFIT), 'profit on a fresh $10,000 a month over the last 12 months'],
             ].map(([v, l]) => (
               <div key={l} className="bg-panel p-5">
                 <dt className="sr-only">{l}</dt>
@@ -253,6 +266,10 @@ export default function HxQuant() {
           <p className="mt-3 text-xs text-muted">
             {MAIN.name}, simulated on the coin list the Bybit bot trades, {SIM_WINDOW}. Fees, slippage and volume limits included.
           </p>
+
+          <div className="mt-10">
+            <GrowthChart traders={TRADERS} defaultKey={MAIN.key} />
+          </div>
 
           <div className="card mt-10 overflow-hidden">
             <div className="flex flex-wrap items-center gap-2 border-b border-line px-5 py-3">
@@ -329,22 +346,23 @@ export default function HxQuant() {
               </ul>
             </div>
             <div className="card p-6">
-              <h3 className="font-semibold text-ink">Why real results will be lower</h3>
+              <h3 className="font-semibold text-ink">How to read these numbers</h3>
               <p className="mt-4 text-sm leading-relaxed text-ink2">
-                The rules were chosen by looking at these same years, which flatters any simulation. Most tests use Binance prices;
-                on Bybit&apos;s own prices the engine earns about one point a month less. Treat the figures as the best the engine
-                has done, not a forecast.
+                The rules were tuned on these same years, so read the figures as what the engine has done, not a forecast. Most
+                tests use Binance prices; on Bybit&apos;s own prices the engine earns about one point a month less. Live results
+                will vary from month to month.
               </p>
               <p className="mt-3 text-sm leading-relaxed text-ink2">
-                In a separate rebuilt test of Sep 2019 to Aug 2020, {MAIN.name} fell {pct(pre?.covid ?? -0.46, 0)} in three days of the
-                March 2020 COVID crash and recovered its high within about a month.
+                The engine has also been through a crash test. In a separate rebuilt run of Sep 2019 to Aug 2020, {MAIN.name} took a
+                {' '}{pct(pre?.covid ?? -0.46, 0)} hit in the three days of the March 2020 COVID crash and was back at its high within
+                about a month.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Live record */}
+      {/* Live record: hidden for now (see the note at the import). Uncomment this block to show it again.
       <section className="border-b border-line py-20 sm:py-24">
         <div className="page">
           <H2 id="live" eyebrow="Live record · real money">The real-money accounts, updated monthly</H2>
@@ -390,20 +408,24 @@ export default function HxQuant() {
           </p>
         </div>
       </section>
+      */}
 
-      {/* Risks */}
+      {/* Risk management */}
       <section className="border-b border-line py-20 sm:py-24">
         <div className="page">
-          <H2 id="risks" eyebrow="Risks, said plainly">You can lose money, including a large part of your account</H2>
-          <p className="max-w-3xl leading-relaxed text-ink2">Only use money you can leave alone through a fall of half its value.</p>
+          <H2 id="risks" eyebrow="Risk management">Every strategy has bad days. This one is built to keep them small.</H2>
+          <p className="max-w-3xl leading-relaxed text-ink2">
+            Spot trades only, a stop-loss and a time limit on every position, and your money in an account in your name. Here is
+            what can still go wrong, and how each risk is handled.
+          </p>
           <ul className="mt-8 grid gap-px overflow-hidden rounded-xl border border-line bg-line md:grid-cols-2">
             {[
-              ['Fast crashes', 'In the March 2020 COVID crash every version fell 43% to 49% in three days. A crash like that tomorrow could do the same.'],
-              ['One coin going wrong', 'In Dec 2019 one coin halved within an hour after the engine bought it. The live losses so far also came mostly from one coin. acam5’s per-coin limit is the fix being tested.'],
-              ['Losing months', `In the simulation ${LAST12_LOSING} of the last 12 months lost money, the worst ${pct(Math.min(...LAST12.map((k) => MAIN.monthly[k])))}. Expect losing weeks and months, sometimes several in a row.`],
-              ['The edge has shrunk', 'Recent months average far less than 2020 to 2021. Markets change, and past results, simulated or real, do not promise future ones.'],
-              ['Exchange risk', 'Your money sits on Bybit. If Bybit froze withdrawals, failed or was hacked, your money would be at risk, and we cannot prevent that.'],
-              ['Size and technical risk', 'The dips are in smaller coins, so larger accounts earn less. An internet or exchange outage can delay an order or an exit.'],
+              ['Sudden crashes', `Crashes are where the engine buys, though one as fast as March 2020 can still pull an account down for a few days. With no leverage nothing can be liquidated, and in simulation ${MAIN.name} was back at its high within about a month.`],
+              ['One coin going wrong', 'Orders are spread across 100+ coins and every position has a stop-loss. acam5 adds a hard cap on how much of the account any single coin can take.'],
+              ['Losing months', `Expect a few. In simulation ${12 - LAST12_LOSING} of the last 12 months were profitable: on a $10,000 stake the winning months made ${usd(LAST12_GAINS)} and the losing ones cost ${usd(Math.abs(LAST12_LOSSES))}.`],
+              ['Changing markets', 'Returns today are lower than in the 2020 to 2021 bull run, which is why this page leads with the last 12 months rather than the six-year average. Every model is trained only on data from before the months it trades.'],
+              ['Exchange risk', 'Your money stays with Bybit, in an account in your name. Only the amount you choose to trade needs to be there; the rest of your savings stays wherever you keep it.'],
+              ['Account size and uptime', 'The engine suits small and mid-size accounts, because the best dips are in smaller coins. If the server or the exchange has an outage, trading pauses and you can close any position yourself in the Bybit app.'],
             ].map(([t, b]) => (
               <li key={t} className="bg-panel p-6">
                 <h3 className="font-semibold text-ink">{t}</h3>
@@ -411,7 +433,7 @@ export default function HxQuant() {
               </li>
             ))}
           </ul>
-          <p className="mt-4 text-sm text-muted">You are responsible for taxes on trading profits in your country. Nothing on this page is a guarantee or a promise of profit.</p>
+          <p className="mt-4 text-sm text-muted">Past results, simulated or live, do not guarantee future returns. Taxes on trading profits are your responsibility.</p>
         </div>
       </section>
 
@@ -494,7 +516,7 @@ export default function HxQuant() {
           <div className="space-y-3">
             {[
               ['Can you take my money?', 'No. The key has no withdrawal or transfer permission, so it cannot send funds anywhere. In theory, someone holding a trade key could buy a thin coin at a bad price to move value elsewhere. hxQuant trades only a published list of coins against USDT, and every order shows in your Bybit app, so you would see it at once.'],
-              ['How much will I make?', 'Nobody can know. The last 12 simulated months averaged about +6% a month with losing months among them, and the real-money accounts are down in their first weeks. Judge it on the live record as it grows.'],
+              ['How much will I make?', `Nobody can promise a number. Over the last 12 simulated months ${MAIN.name} averaged ${pct(MAIN.stats.last12)} a month, with ${12 - LAST12_LOSING} of the 12 months profitable. Returns depend on how often the market panics, so some months will be quiet.`],
               ['Why has it not traded for days?', 'It only buys sudden crashes. In a calm market its orders sit below the price and do not fill, and your money stays in cash or in Bitcoin, Ethereum or gold. That is normal.'],
               ['Can I take my money out?', 'Yes, at any time: it is your account. Delete the key first so the bot stops, then sell any coins and withdraw as usual.'],
               ['What happens if the server goes down?', 'Trading pauses until it is back, which can delay a sale. You can always close any position yourself in the Bybit app.'],
@@ -520,9 +542,9 @@ export default function HxQuant() {
       <section className="py-14">
         <div className="page space-y-4">
           <p className="max-w-4xl text-xs leading-relaxed text-muted">
-            Simulated results are hypothetical, based on past prices, and do not represent real trading. Crypto trading carries a
-            high risk of loss, including most of the money traded. Nothing on this page is investment advice or a promise of
-            profit. Bybit is named as the exchange hxQuant trades on; there is no partnership with or endorsement by Bybit.
+            Simulated results are hypothetical, based on past prices, and do not represent real trading. Crypto trading involves
+            risk, and the value of an account can go down as well as up. Nothing on this page is investment advice or a promise
+            of profit. Bybit is named as the exchange hxQuant trades on; there is no partnership with or endorsement by Bybit.
           </p>
           <Link href="/" className="inline-flex items-center gap-2 text-sm text-ink2 hover:text-ink">
             Built by {PERSON.name}, Web3 DevSecOps engineer <ArrowIcon />

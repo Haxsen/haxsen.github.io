@@ -53,8 +53,8 @@ export default function MonthlyHeatmap({ traders }: { traders: Trader[] }) {
           </p>
           <p className="mt-1 text-sm text-muted">Blue months gained, red months lost. Sep 2020 to Sep 2026.</p>
         </div>
-        <div role="group" aria-label="Trader" className="inline-flex flex-wrap overflow-hidden rounded-lg border border-line">
-          {traders.map((t, i) => (
+        <div role="group" aria-label="Trader" className="flex flex-wrap gap-1.5">
+          {traders.map((t) => (
             <button
               key={t.key}
               type="button"
@@ -63,8 +63,8 @@ export default function MonthlyHeatmap({ traders }: { traders: Trader[] }) {
                 setKey(t.key)
                 setActive(null)
               }}
-              className={`px-3 py-1.5 text-sm transition-colors ${i > 0 ? 'border-l border-line' : ''} ${
-                t.key === key ? 'bg-panel2 font-semibold text-ink' : 'text-ink2 hover:text-ink'
+              className={`whitespace-nowrap rounded-md border px-3 py-1.5 text-sm transition-colors ${
+                t.key === key ? 'border-ink2/50 bg-panel2 font-semibold text-ink' : 'border-line text-ink2 hover:text-ink'
               }`}
             >
               {t.name}
