@@ -53,3 +53,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .qodo
+CVnext.md
+CVreliability.md
+candidateTargetPerfection.md

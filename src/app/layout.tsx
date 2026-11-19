@@ -1,52 +1,69 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import type { Metadata, Viewport } from 'next'
+import { Inter, JetBrains_Mono } from 'next/font/google'
+import './globals.css'
+import SiteNav from '@/components/SiteNav'
+import SiteFooter from '@/components/SiteFooter'
 
-const inter = Inter({ subsets: ["latin"] });
+const sans = Inter({ subsets: ['latin'], variable: '--font-sans', display: 'swap' })
+const mono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono', display: 'swap' })
+
+const description =
+  'Hassān Ali, Web3 DevSecOps engineer. I secure the CI/CD pipelines, signing keys and Ethereum node infrastructure that DeFi protocols run on: Slither, Mythril, Foundry, Terraform, AWS KMS, OPA and Kubernetes.'
 
 export const metadata: Metadata = {
-  title: "HAXSEN - Career Website",
-  description: "Showcasing my career achievements and professional journey",
-};
+  metadataBase: new URL('https://haxsen.github.io'),
+  title: {
+    default: 'Hassān Ali · Web3 DevSecOps Engineer',
+    template: '%s · Hassān Ali',
+  },
+  description,
+  authors: [{ name: 'Hassān Ali', url: 'https://haxsen.github.io' }],
+  keywords: [
+    'Web3 DevSecOps',
+    'DevSecOps engineer',
+    'smart contract security',
+    'Slither',
+    'Mythril',
+    'Foundry',
+    'Terraform',
+    'AWS KMS',
+    'Ethereum node infrastructure',
+    'Kubernetes',
+    'site reliability engineer',
+  ],
+  openGraph: {
+    type: 'website',
+    siteName: 'Hassān Ali',
+    title: 'Hassān Ali · Web3 DevSecOps Engineer',
+    description,
+    url: '/',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Hassān Ali · Web3 DevSecOps Engineer',
+    description,
+  },
+}
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export const viewport: Viewport = {
+  themeColor: '#0a0d12',
+  colorScheme: 'dark',
+}
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={inter.className}>
-        <nav className="fixed w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm z-50 border-b border-gray-200 dark:border-gray-800">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between h-16 items-center">
-              <a href="#" className="text-xl font-bold text-gray-900 dark:text-white">
-                HAXSEN
-              </a>
-              <div className="hidden sm:flex space-x-8">
-                <a href="#features" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-                  Features
-                </a>
-                <a href="#how-it-works" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-                  How It Works
-                </a>
-                <a
-                  href="https://eth-staking-analytics-frontend.onrender.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
-                >
-                  Dashboard
-                </a>
-                <a href="/portfolio" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-                  View Portfolio/CV
-                </a>
-              </div>
-            </div>
-          </div>
-        </nav>
-        {children}
+    <html lang="en" className={`${sans.variable} ${mono.variable}`}>
+      <body className="min-h-screen font-sans">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-accent focus:px-3 focus:py-2 focus:text-accent-ink"
+        >
+          Skip to content
+        </a>
+        <SiteNav />
+        <div id="main">{children}</div>
+        <SiteFooter />
       </body>
     </html>
-  );
+  )
 }

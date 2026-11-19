@@ -1,427 +1,443 @@
-'use client'
+import type { Metadata } from 'next'
+import Link from 'next/link'
+import {
+  CAPABILITIES,
+  EDUCATION,
+  EXPERIENCE,
+  HERO_STATS,
+  LANGUAGES,
+  OTHER_WORK,
+  PERSON,
+  PLATFORM,
+  SECURITY_PROJECTS,
+} from '@/data/profile'
+import { ArrowIcon, CheckIcon, DownloadIcon, GitHubIcon, LinkedInIcon, MailIcon, ShieldIcon, TelegramIcon } from '@/components/Icons'
 
-import { useState } from 'react'
-import Image from 'next/image'
-import WalletConnect from '@/components/WalletConnect'
-import HxSLSTInterface from '@/components/HxSLSTInterface'
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+}
+
+const GATE = [
+  { stage: 'workflows', tool: 'actionlint · zizmor', result: '0 findings' },
+  { stage: 'secrets', tool: 'trufflehog · gitleaks', result: '7/7 canaries caught' },
+  { stage: 'slither', tool: '100+ detectors', result: '0 findings' },
+  { stage: 'mythril', tool: 'symbolic execution', result: '0 issues' },
+  { stage: 'foundry', tool: 'fuzz · invariants', result: '23/23 · 100% cov' },
+  { stage: 'checkov', tool: 'terraform', result: '80 passed · 0 failed' },
+  { stage: 'opa', tool: 'web3 rego policies', result: '23/23 tests' },
+]
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: PERSON.name,
+  jobTitle: PERSON.title,
+  url: PERSON.site,
+  email: `mailto:${PERSON.email}`,
+  sameAs: [PERSON.github, PERSON.linkedin, PERSON.telegram],
+  alumniOf: { '@type': 'CollegeOrUniversity', name: 'National University of Sciences and Technology' },
+  knowsAbout: ['DevSecOps', 'Smart contract security', 'Terraform', 'AWS KMS', 'Kubernetes', 'Ethereum', 'CI/CD security'],
+}
+
+function SectionHead({ id, eyebrow, title, intro }: { id?: string; eyebrow: string; title: string; intro?: string }) {
+  return (
+    <div className="mb-10 max-w-3xl" id={id}>
+      <p className="eyebrow mb-3">{eyebrow}</p>
+      <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">{title}</h2>
+      {intro && <p className="mt-4 text-base leading-relaxed text-ink2 sm:text-lg">{intro}</p>}
+    </div>
+  )
+}
 
 export default function Home() {
-  const [account, setAccount] = useState<string | null>(null)
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 text-white">
-      {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
-        <div className="max-w-6xl mx-auto text-center relative z-10">
-          <div className="mb-4 mt-12 relative flex justify-center">
-            <Image 
-              src="https://raw.githubusercontent.com/Haxsen/haxsen.github.io/refs/heads/master/hxSLST.svg" 
-              alt="hxSLST Logo" 
-              width={80}
-              height={80}
-              className="rounded-md"
-            />
-          </div>
-          
-          <h1 className="text-4xl sm:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            HaxsensSmartLST
-          </h1>
-          
-          <h2 className="text-xl sm:text-2xl text-gray-300 mb-8">
-            One token. The best staking yields. Zero effort.
-          </h2>
-          
-          <p className="text-lg text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Invest your ETH into our secure vault system and earn optimized yields through 
-            strategic DeFi protocols. Built with security, transparency, and efficiency at its core.
-          </p>
-          
-          <div className="bg-slate-800/50 backdrop-blur-sm p-4 rounded-xl border border-slate-700 mb-8 max-w-2xl mx-auto">
-            <p className="text-sm text-gray-500 mb-2">Contract Address</p>
-            <p className="text-xs text-gray-400 font-mono break-all">0xac5b65150c6265b300f231036f684921deaa95d2</p>
-            <p className="text-sm text-blue-400 mt-2">HaxsensSmartLST (hxSLST)</p>
-          </div>
-          
-          <div className="flex flex-col sm:flex-row justify-center gap-6 mb-16">
-            <WalletConnect onConnect={setAccount} account={account} />
-            <a
-              href="https://eth-staking-analytics-frontend.onrender.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 border-2 border-blue-500 text-blue-400 rounded-xl hover:bg-blue-500/10 transition-all transform hover:scale-105 font-semibold text-lg"
-            >
-              View Dashboard
-            </a>
-          </div>
-          
-          {account && (
-            <div className="max-w-md mx-auto mb-8">
-              <HxSLSTInterface account={account} />
+    <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
+      {/* Hero */}
+      <section className="relative overflow-hidden border-b border-line pt-16">
+        <div className="bg-grid-pattern pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_75%)]" aria-hidden="true" />
+        <div className="page relative grid gap-12 py-16 sm:py-24 lg:grid-cols-[1.15fr_1fr] lg:items-center">
+          <div>
+            <p className="eyebrow mb-5 flex flex-wrap items-center gap-x-3 gap-y-1">
+              <span className="inline-flex items-center gap-1.5 text-accent">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+                Open to remote roles
+              </span>
+              <span>{PERSON.location}</span>
+            </p>
+            <h1 className="text-[2.6rem] font-semibold leading-[1.05] tracking-tight text-ink sm:text-6xl">
+              {PERSON.name}
+              <span className="mt-2 block text-ink2">{PERSON.title}</span>
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink sm:text-xl">
+              I secure the pipelines, keys and nodes that move money on-chain.
+            </p>
+            <p className="mt-4 max-w-xl leading-relaxed text-ink2">
+              6+ years building and running production infrastructure, most recently two years as an SRE at Puffer Finance, an
+              EigenLayer liquid-restaking protocol. I build CI/CD security gates for smart contracts, keyless KMS-signed
+              deployments, and hardened Ethereum node infrastructure on Terraform and Kubernetes.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a href={PERSON.cvPdf} download className="btn-primary">
+                <DownloadIcon /> Download CV
+              </a>
+              <a href="#work" className="btn-ghost">
+                See the security work <ArrowIcon />
+              </a>
             </div>
-          )}
-          
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl border border-slate-700">
-              <div className="text-3xl font-bold text-green-400 mb-2">APY: 4%+</div>
-              <div className="text-gray-400">Annual Percentage Yield</div>
-            </div>
-            <div className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl border border-slate-700">
-              <div className="text-3xl font-bold text-blue-400 mb-2">tETH + ankrETH</div>
-              <div className="text-gray-400">Underlying Assets</div>
-            </div>
-            <div className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl border border-slate-700">
-              <div className="text-3xl font-bold text-purple-400 mb-2">ERC-4626</div>
-              <div className="text-gray-400">Vault Standard</div>
-            </div>
+            <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm text-ink2">
+              <li>
+                <a href={PERSON.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-ink">
+                  <GitHubIcon /> GitHub
+                </a>
+              </li>
+              <li>
+                <a href={PERSON.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-ink">
+                  <LinkedInIcon /> LinkedIn
+                </a>
+              </li>
+              <li>
+                <a href={PERSON.telegram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-ink">
+                  <TelegramIcon /> Telegram
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${PERSON.email}`} className="inline-flex items-center gap-1.5 hover:text-ink">
+                  <MailIcon /> {PERSON.email}
+                </a>
+              </li>
+            </ul>
           </div>
+
+          {/* Security gate terminal: real results from the pipeline repo */}
+          <figure className="card overflow-hidden shadow-2xl shadow-black/40">
+            <div className="flex items-center justify-between gap-3 border-b border-line bg-panel2 px-4 py-2.5">
+              <div className="flex gap-1.5" aria-hidden="true">
+                <span className="h-2.5 w-2.5 rounded-full bg-line" />
+                <span className="h-2.5 w-2.5 rounded-full bg-line" />
+                <span className="h-2.5 w-2.5 rounded-full bg-line" />
+              </div>
+              <span className="truncate font-mono text-[11px] text-muted">automated-web3-devsecops-pipeline · main</span>
+            </div>
+            <div className="px-4 py-4 font-mono text-[12.5px] leading-7 sm:px-5">
+              <p className="text-ink2">
+                <span className="text-muted">$</span> make security-gate
+              </p>
+              <ul>
+                {GATE.map((g) => (
+                  <li key={g.stage} className="grid grid-cols-[1.1rem_5.5rem_1fr] items-baseline sm:grid-cols-[1.1rem_5.5rem_10.5rem_1fr]">
+                    <CheckIcon className="h-3.5 w-3.5 translate-y-[2px] text-accent" />
+                    <span className="text-ink">{g.stage}</span>
+                    <span className="hidden truncate text-muted sm:inline">{g.tool}</span>
+                    <span className="truncate text-ink2">{g.result}</span>
+                  </li>
+                ))}
+                <li className="grid grid-cols-[1.1rem_5.5rem_1fr] items-baseline sm:grid-cols-[1.1rem_5.5rem_10.5rem_1fr]">
+                  <span className="text-accent">→</span>
+                  <span className="text-ink">deploy</span>
+                  <span className="hidden truncate text-muted sm:inline">OIDC → AWS KMS</span>
+                  <span className="truncate text-accent">no private key exists</span>
+                </li>
+              </ul>
+            </div>
+            <figcaption className="border-t border-line px-4 py-2.5 text-xs text-muted sm:px-5">
+              Verified results from the{' '}
+              <a href={SECURITY_PROJECTS[0].repo} target="_blank" rel="noopener noreferrer" className="link">
+                pipeline repo
+              </a>
+              , run in the same pinned containers CI uses.
+            </figcaption>
+          </figure>
+        </div>
+
+        <div className="page relative pb-16">
+          <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line lg:grid-cols-4">
+            {HERO_STATS.map((s) => (
+              <div key={s.value} className="bg-panel p-5">
+                <dt className="sr-only">{s.label}</dt>
+                <dd>
+                  <span className="block text-2xl font-semibold tracking-tight text-ink sm:text-3xl">{s.value}</span>
+                  <span className="mt-1.5 block text-[13px] leading-snug text-ink2">{s.label}</span>
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 
-      {/* How It Works */}
-      <section id="how-it-works" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16">How It Works</h2>
-          
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-3">1. Deposit ETH</h3>
-              <p className="text-gray-400">Connect your wallet and deposit Ether into the vault</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-3">2. Receive smartLST</h3>
-              <p className="text-gray-400">Get smartLST shares representing your deposit</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-3">3. Auto-Optimized</h3>
-              <p className="text-gray-400">Brain service optimizes yields through rebalancing</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-3">4. Withdraw Anytime</h3>
-              <p className="text-gray-400">Withdraw your funds plus earnings at any time</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Security work */}
+      <section className="border-b border-line py-20 sm:py-28">
+        <div className="page">
+          <SectionHead
+            id="work"
+            eyebrow="Security engineering, in public"
+            title="Three builds that cover where protocols actually lose money"
+            intro="Leaked deployer keys, poisoned pipelines, exposed RPC endpoints and silent contract takeovers. Each repository is open source, runs its own checks in CI, and documents its threat model, including the risks it accepts."
+          />
 
-      {/* Features Section */}
-      <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-800/50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16">Why Choose SmartLST?</h2>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-slate-900/50 p-8 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors">
-              <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Dual Strategy</h3>
-              <p className="text-sm text-gray-400">Don&apos;t have ETH? Get started with just 0.01 ETH.</p>
-              <p className="text-gray-400">tETH stability + ankrETH alpha for optimized returns</p>
-            </div>
-            
-            <div className="bg-slate-900/50 p-8 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors">
-              <div className="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Auto-Rebalancing</h3>
-              <p className="text-gray-400">Brain service optimizes yields through strategic rebalancing</p>
-            </div>
-            
-            <div className="bg-slate-900/50 p-8 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors">
-              <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-3">MEV Protection</h3>
-              <p className="text-gray-400">Milkman integration protects against front-running attacks</p>
-            </div>
-            
-            <div className="bg-slate-900/50 p-8 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors">
-              <div className="w-12 h-12 bg-yellow-500/20 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Gas Optimized</h3>
-              <p className="text-gray-400">Low gas fees through batch operations and efficient design</p>
-            </div>
-            
-            <div className="bg-slate-900/50 p-8 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors">
-              <div className="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Real-time Analytics</h3>
-              <p className="text-gray-400">Track your investments with comprehensive dashboard</p>
-            </div>
-            
-            <div className="bg-slate-900/50 p-8 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors">
-              <div className="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Transparent</h3>
-              <p className="text-gray-400">All transactions on-chain with full visibility</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works */}
-      <section id="how-it-works" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16">How It Works</h2>
-          
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
-                1
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Connect Wallet</h3>
-              <p className="text-gray-400">Connect your Ethereum wallet using MetaMask or WalletConnect</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
-                2
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Deposit ETH</h3>
-              <p className="text-gray-400">Deposit Ether into the vault with one simple transaction</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
-                3
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Earn Rewards</h3>
-              <p className="text-gray-400">Your ETH is automatically deployed to earn yield</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
-                4
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Withdraw Anytime</h3>
-              <p className="text-gray-400">Withdraw your funds plus earnings at any time</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Token Details */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16">Token Details</h2>
-          
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="bg-slate-800/50 p-8 rounded-xl border border-slate-700">
-              <h3 className="text-xl font-semibold mb-4">hxSLST Token</h3>
-              <p className="text-gray-400 mb-4">ERC-4626 vault shares representing your deposit</p>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span className="text-gray-500">Name:</span>
-                  <span className="text-blue-400">HaxsensSmartLST</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-500">Symbol:</span>
-                  <span className="text-green-400">hxSLST</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-500">Standard:</span>
-                  <span className="text-purple-400">ERC-4626</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-500">Asset:</span>
-                  <span className="text-yellow-400">ETH</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-slate-800/50 p-8 rounded-xl border border-slate-700">
-              <h3 className="text-xl font-semibold mb-4">Underlying Assets</h3>
-              <p className="text-gray-400 mb-4">Strategic mix of liquid staking tokens</p>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span className="text-gray-500">tETH:</span>
-                  <span className="text-blue-400">100% (start)</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-500">ankrETH:</span>
-                  <span className="text-purple-400">Max 60% TVL</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Get Started */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-800/50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16">Get Started</h2>
-          
-          <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-            <div>
-              <h3 className="text-2xl font-semibold mb-6">Step-by-Step Guide</h3>
-              <div className="space-y-6">
-                <div className="flex gap-4">
-                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold">1</span>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-2">Connect Wallet</h4>
-                    <p className="text-gray-400">Click &quot;Connect Wallet&quot; and choose MetaMask or WalletConnect</p>
-                  </div>
-                </div>
-                
-                <div className="flex gap-4">
-                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold">2</span>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-2">Deposit ETH</h4>
-                    <p className="text-gray-400">Enter amount and confirm transaction. No minimum deposit.</p>
-                  </div>
-                </div>
-                
-                <div className="flex gap-4">
-                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold">3</span>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-2">Receive smartLST</h4>
-                    <p className="text-gray-400">Get smartLST shares representing your deposit</p>
-                  </div>
-                </div>
-                
-                <div className="flex gap-4">
-                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold">4</span>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-2">Track & Withdraw</h4>
-                    <p className="text-gray-400">Monitor growth on dashboard, withdraw anytime</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div>
-              <h3 className="text-2xl font-semibold mb-6">Wallet Requirements</h3>
-              <div className="space-y-4">
-                <div className="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
-                  <h4 className="font-semibold mb-2 text-blue-400">Supported Wallets</h4>
-                  <ul className="text-gray-400 space-y-1">
-                    <li>• MetaMask</li>
-                    <li>• WalletConnect</li>
-                    <li>• Any ERC-20 compatible wallet</li>
-                  </ul>
-                </div>
-                
-                <div className="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
-                  <h4 className="font-semibold mb-2 text-green-400">Requirements</h4>
-                  <ul className="text-gray-400 space-y-1">
-                    <li>• Ethereum wallet</li>
-                    <li>• ETH for gas fees</li>
-                    <li>• No minimum deposit</li>
-                  </ul>
-                </div>
-                
-                <div className="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
-                  <h4 className="font-semibold mb-2 text-purple-400">Security Tips</h4>
-                  <ul className="text-gray-400 space-y-1">
-                    <li>• Verify contract address</li>
-                    <li>• Never share private keys</li>
-                    <li>• Use official website only</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16">Frequently Asked Questions</h2>
-          
           <div className="space-y-6">
-            <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
-              <h3 className="text-xl font-semibold mb-3">What is hxSLST?</h3>
-              <p className="text-gray-400">hxSLST is an ERC-4626 vault that optimizes Ethereum staking yields through strategic allocation to tETH and ankrETH tokens.</p>
-            </div>
-            
-            <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
-              <h3 className="text-xl font-semibold mb-3">How does 4%+ APY work?</h3>
-              <p className="text-gray-400">Yield comes from LST appreciation (tETH/ankrETH staking rewards) plus arbitrage opportunities captured by our Brain service.</p>
-            </div>
-            
-            <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
-              <h3 className="text-xl font-semibold mb-3">Is my ETH safe?</h3>
-              <p className="text-gray-400">Yes. hxSLST uses audited contracts, MEV protection via Milkman, and multi-signature controls. Underlying LSTs are from established protocols.</p>
-            </div>
-            
-            <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
-              <h3 className="text-xl font-semibold mb-3">Can I withdraw anytime?</h3>
-              <p className="text-gray-400">Yes. You can withdraw your funds plus earned yields at any time without lockup periods.</p>
-            </div>
-            
-            <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
-              <h3 className="text-xl font-semibold mb-3">What are the risks?</h3>
-              <p className="text-gray-400">Main risks come from underlying LST protocols (tETH and ankrETH). hxSLST adds rebalancing and MEV protection to optimize returns.</p>
-            </div>
+            {SECURITY_PROJECTS.map((p, i) => (
+              <article key={p.id} className="card overflow-hidden">
+                <div className="grid gap-8 p-6 sm:p-8 lg:grid-cols-[1fr_20rem]">
+                  <div>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <span className="font-mono text-xs text-accent">0{i + 1}</span>
+                      <h3 className="text-xl font-semibold tracking-tight text-ink sm:text-2xl">{p.name}</h3>
+                    </div>
+                    <p className="mt-3 max-w-2xl leading-relaxed text-ink2">{p.oneLiner}</p>
+                    <p className="mt-4 flex items-start gap-2 text-sm text-ink">
+                      <ShieldIcon className="mt-0.5 h-4 w-4 flex-none text-accent" />
+                      <span>
+                        <span className="text-muted">Stops: </span>
+                        {p.stops}
+                      </span>
+                    </p>
+                    <div className="mt-6 grid gap-5 sm:grid-cols-2">
+                      {p.highlights.map((h) => (
+                        <div key={h.title}>
+                          <h4 className="text-sm font-semibold text-ink">{h.title}</h4>
+                          <p className="mt-1.5 text-sm leading-relaxed text-ink2">{h.body}</p>
+                        </div>
+                      ))}
+                    </div>
+                    <ul className="mt-6 flex flex-wrap gap-1.5" aria-label="Stack">
+                      {p.stack.map((s) => (
+                        <li key={s} className="chip">
+                          {s}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <aside className="flex flex-col justify-between gap-6 rounded-lg border border-line bg-bg/60 p-5">
+                    <div>
+                      <p className="eyebrow mb-3">Verified in CI</p>
+                      <ul className="space-y-2.5">
+                        {p.verified.map((v) => (
+                          <li key={v} className="flex gap-2.5 text-[13px] leading-snug text-ink">
+                            <CheckIcon className="mt-0.5 h-3.5 w-3.5 flex-none text-accent" />
+                            {v}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <a href={p.repo} target="_blank" rel="noopener noreferrer" className="btn-ghost w-full">
+                      <GitHubIcon /> View repository
+                    </a>
+                  </aside>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 to-purple-600">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Start Earning?</h2>
-          <p className="text-xl mb-8 text-blue-100">
-            Join hxSLST and earn optimized yields on your ETH.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-6 mb-8">
-            <a
-              href="/portfolio"
-              className="px-8 py-4 border-2 border-white text-white rounded-xl hover:bg-white/10 transition-all transform hover:scale-105 font-semibold text-lg"
-            >
-              Built by Hassān Ali
-            </a>
+      {/* Capabilities */}
+      <section className="border-b border-line py-20 sm:py-28">
+        <div className="page">
+          <SectionHead
+            id="skills"
+            eyebrow="What I bring to a security team"
+            title="DevOps automation with Web3 security built in"
+            intro="I sit between protocol engineers and infrastructure: I make the secure path the default path, and I prove the controls work instead of assuming they do."
+          />
+          <div className="grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+            {CAPABILITIES.map((c) => (
+              <div key={c.area} className="bg-panel p-6">
+                <h3 className="text-base font-semibold text-ink">{c.area}</h3>
+                <ul className="mt-4 space-y-2">
+                  {c.items.map((it) => (
+                    <li key={it} className="flex gap-2 text-sm leading-snug text-ink2">
+                      <span className="mt-[7px] h-1 w-1 flex-none rounded-full bg-accent" aria-hidden="true" />
+                      {it}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
-          <p className="text-sm text-blue-200">
-            &quot;<b>hxSLST</b>&quot; is a DeFi protocol. You are trusting the protocol to manage your funds. DYOR/NFA.
+          <div className="mt-6 grid gap-4 text-sm sm:grid-cols-2">
+            <p className="text-ink2">
+              <span className="eyebrow mr-2">Languages</span>
+              {LANGUAGES.join(' · ')}
+            </p>
+            <p className="text-ink2">
+              <span className="eyebrow mr-2">Platform</span>
+              {PLATFORM.join(' · ')}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Experience */}
+      <section className="border-b border-line py-20 sm:py-28">
+        <div className="page">
+          <SectionHead id="experience" eyebrow="Experience" title="Shipping and running production systems since 2020" />
+          <ol className="relative space-y-10 border-l border-line pl-6 sm:pl-8">
+            {EXPERIENCE.map((r) => (
+              <li key={r.company + r.period} className="relative">
+                <span className="absolute -left-[29px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-bg bg-accent sm:-left-[37px]" aria-hidden="true" />
+                <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+                  <h3 className="text-lg font-semibold text-ink">
+                    {r.title}
+                    <span className="text-ink2"> · </span>
+                    {r.url ? (
+                      <a href={r.url} target="_blank" rel="noopener noreferrer" className="text-ink2 hover:text-ink">
+                        {r.company}
+                      </a>
+                    ) : (
+                      <span className="text-ink2">{r.company}</span>
+                    )}
+                  </h3>
+                  <p className="flex-none font-mono text-xs text-muted">
+                    {r.period} · {r.mode}
+                  </p>
+                </div>
+                <ul className="mt-3 max-w-3xl space-y-2">
+                  {r.bullets.map((b) => (
+                    <li key={b} className="flex gap-2.5 text-[15px] leading-relaxed text-ink2">
+                      <span className="mt-[11px] h-1 w-1 flex-none rounded-full bg-muted" aria-hidden="true" />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+                {r.tech && <p className="mt-3 font-mono text-xs text-muted">{r.tech}</p>}
+              </li>
+            ))}
+          </ol>
+          <p className="mt-12 text-sm text-ink2">
+            <span className="eyebrow mr-2">Education</span>
+            {EDUCATION.degree} · {EDUCATION.school}
           </p>
+        </div>
+      </section>
+
+      {/* Products */}
+      <section className="border-b border-line py-20 sm:py-28">
+        <div className="page">
+          <SectionHead
+            id="products"
+            eyebrow="Products I build and run"
+            title="Two products, engineered with the same discipline"
+            intro="Alongside client and employer work I build my own financial products under Haxsen Capital. Both put custody and risk first."
+          />
+          <div className="grid gap-6 lg:grid-cols-2">
+            <Link href="/hxquant" className="card group flex flex-col p-6 transition-colors hover:border-ink2/50 sm:p-8">
+              <div className="flex items-center justify-between gap-3">
+                <h3 className="text-2xl font-semibold tracking-tight text-ink">hxQuant</h3>
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/50 px-2.5 py-0.5 font-mono text-[11px] uppercase tracking-wider text-accent">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+                  Live pilot
+                </span>
+              </div>
+              <p className="mt-3 leading-relaxed text-ink2">
+                An ML trading engine that buys sudden crypto crashes and sells the rebound, inside the client&apos;s own exchange
+                account with a trade-only key that cannot withdraw.
+              </p>
+              <dl className="mt-6 grid grid-cols-3 gap-px overflow-hidden rounded-lg border border-line bg-line text-center">
+                {[
+                  ['7 yrs', 'minute-level backtest'],
+                  ['300+', 'coins scanned hourly'],
+                  ['Spot', 'no leverage, no futures'],
+                ].map(([v, l]) => (
+                  <div key={l} className="bg-bg/60 px-2 py-3">
+                    <dt className="sr-only">{l}</dt>
+                    <dd>
+                      <span className="block whitespace-nowrap text-[15px] font-semibold text-ink sm:text-lg">{v}</span>
+                      <span className="block text-[11.5px] leading-tight text-muted">{l}</span>
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-accent">
+                Performance, custody and risks <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </span>
+            </Link>
+
+            <Link href="/hxslst" className="card group flex flex-col p-6 transition-colors hover:border-ink2/50 sm:p-8">
+              <div className="flex items-center justify-between gap-3">
+                <h3 className="text-2xl font-semibold tracking-tight text-ink">hxSLST</h3>
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-warn/50 px-2.5 py-0.5 font-mono text-[11px] uppercase tracking-wider text-warn">
+                  In development
+                </span>
+              </div>
+              <p className="mt-3 leading-relaxed text-ink2">
+                HaxsensSmartLST: one token for the best ETH staking yield. An ERC-4626 vault that allocates across liquid-staking
+                tokens and rebalances through MEV-protected swaps.
+              </p>
+              <dl className="mt-6 grid grid-cols-3 gap-px overflow-hidden rounded-lg border border-line bg-line text-center">
+                {[
+                  ['ERC-4626', 'vault standard'],
+                  ['tETH', '+ ankrETH underlying'],
+                  ['Milkman', 'MEV-protected swaps'],
+                ].map(([v, l]) => (
+                  <div key={l} className="bg-bg/60 px-2 py-3">
+                    <dt className="sr-only">{l}</dt>
+                    <dd>
+                      <span className="block whitespace-nowrap text-[15px] font-semibold text-ink sm:text-lg">{v}</span>
+                      <span className="block text-[11.5px] leading-tight text-muted">{l}</span>
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-accent">
+                How the vault works <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Other work */}
+      <section className="border-b border-line py-20 sm:py-24">
+        <div className="page">
+          <SectionHead eyebrow="More work" title="Other things I have shipped" />
+          <ul className="grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+            {OTHER_WORK.map((w) => (
+              <li key={w.name} className="flex flex-col bg-panel p-5">
+                <h3 className="font-semibold text-ink">{w.name}</h3>
+                <p className="mt-1.5 flex-1 text-sm leading-relaxed text-ink2">{w.desc}</p>
+                <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+                  {w.links.map((l) => (
+                    <a key={l.url} href={l.url} target="_blank" rel="noopener noreferrer" className="link">
+                      {l.label}
+                    </a>
+                  ))}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section className="py-20 sm:py-28">
+        <div className="page">
+          <div id="contact" className="card relative overflow-hidden p-8 sm:p-12">
+            <div className="bg-grid-pattern pointer-events-none absolute inset-0 opacity-60 [mask-image:radial-gradient(ellipse_at_right,black_10%,transparent_70%)]" aria-hidden="true" />
+            <div className="relative max-w-2xl">
+              <p className="eyebrow mb-3">Contact</p>
+              <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">Hiring for Web3 security or platform engineering?</h2>
+              <p className="mt-4 text-lg leading-relaxed text-ink2">
+                I&apos;m open to remote DevSecOps, SRE and platform roles at protocols, exchanges and infrastructure teams.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a href={`mailto:${PERSON.email}?subject=Role%20at%20`} className="btn-primary">
+                  <MailIcon /> Email me
+                </a>
+                <a href={PERSON.telegram} target="_blank" rel="noopener noreferrer" className="btn-ghost">
+                  <TelegramIcon /> Telegram
+                </a>
+                <a href={PERSON.linkedin} target="_blank" rel="noopener noreferrer" className="btn-ghost">
+                  <LinkedInIcon /> LinkedIn
+                </a>
+                <a href={PERSON.cvPdf} download className="btn-ghost">
+                  <DownloadIcon /> CV (PDF)
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>

@@ -26,13 +26,13 @@ export default function WalletConnect({ onConnect, account }: { onConnect: (acco
   if (account) {
     return (
       <div className="flex items-center gap-2">
-        <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-        <span className="text-sm text-gray-300">
+        <div className="w-2 h-2 bg-accent rounded-full"></div>
+        <span className="text-sm text-ink2">
           {account.slice(0, 6)}...{account.slice(-4)}
         </span>
         <button 
           onClick={() => onConnect('')}
-          className="text-sm text-blue-400 hover:text-blue-300"
+          className="text-sm text-accent hover:underline"
         >
           Disconnect
         </button>
@@ -44,7 +44,7 @@ export default function WalletConnect({ onConnect, account }: { onConnect: (acco
     <button
       onClick={connectWallet}
       disabled={isConnecting}
-      className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-blue-500/25 font-semibold text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+      className="btn-primary disabled:cursor-not-allowed disabled:opacity-50"
     >
       {isConnecting ? 'Connecting...' : 'Connect Wallet'}
     </button>

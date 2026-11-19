@@ -3,47 +3,80 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-rgb: 17, 24, 39;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb));
+  color-scheme: dark;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-bg text-ink antialiased;
+  }
+
+  ::selection {
+    background: rgba(61, 220, 151, 0.28);
+  }
+
+  :focus-visible {
+    outline: 2px solid #3ddc97;
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 }
 
 @layer components {
-  .section-padding {
-    @apply py-20 px-4 sm:px-6 lg:px-8;
+  .page {
+    @apply mx-auto w-full max-w-page px-4 sm:px-6 lg:px-8;
   }
-  
-  .container {
-    @apply max-w-4xl mx-auto;
+
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-[0.14em] text-muted;
+  }
+
+  .card {
+    @apply rounded-xl border border-line bg-panel;
+  }
+
+  .chip {
+    @apply inline-flex items-center rounded-md border border-line bg-panel2 px-2 py-0.5 font-mono text-[11.5px] text-ink2;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-accent-ink transition-colors hover:bg-[#5fe5ab];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-line px-5 py-3 text-sm font-semibold text-ink transition-colors hover:border-ink2 hover:bg-panel;
+  }
+
+  .link {
+    @apply text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent;
   }
 }
 
 @layer utilities {
   .bg-grid-pattern {
-    background-image: linear-gradient(to right, rgb(var(--foreground-rgb) / 0.1) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(var(--foreground-rgb) / 0.1) 1px, transparent 1px);
-    background-size: 24px 24px;
+    background-image: linear-gradient(to right, rgb(255 255 255 / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.06) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
   }
 }
 
-/* Add smooth transitions for dark mode */
-* {
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
 }

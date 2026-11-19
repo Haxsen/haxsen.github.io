@@ -154,23 +154,23 @@ export default function HxSLSTInterface({ account }: { account: string }) {
   }
 
   return (
-    <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+    <div className="bg-panel p-6 rounded-xl border border-line">
       <h3 className="text-xl font-semibold mb-4">hxSLST Interface</h3>
       
       <div className="mb-4">
-        <p className="text-sm text-gray-400">Your hxSLST Balance</p>
-        <p className="text-2xl font-bold text-blue-400">{balance} hxSLST</p>
+        <p className="text-sm text-ink2">Your hxSLST Balance</p>
+        <p className="text-2xl font-bold text-accent">{balance} hxSLST</p>
       </div>
 
       <div className="mb-4">
-        <label className="block text-sm text-gray-400 mb-2">Deposit ETH</label>
+        <label className="block text-sm text-ink2 mb-2">Deposit ETH</label>
         <input
           type="number"
           value={depositAmount}
           onChange={(e) => setDepositAmount(e.target.value)}
           placeholder="0.0"
           step="0.001"
-          className="w-full px-3 py-2 bg-slate-900 border border-slate-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500"
+          className="w-full px-3 py-2 bg-bg border border-line rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-accent"
         />
         <button
           onClick={deposit}
@@ -189,12 +189,12 @@ export default function HxSLSTInterface({ account }: { account: string }) {
         >
           {isLoading ? 'Processing...' : 'Withdraw All hxSLST'}
         </button>
-        <p className="text-xs text-gray-500 mt-1">Receives tETH + ankrETH tokens</p>
+        <p className="text-xs text-muted mt-1">Receives tETH + ankrETH tokens</p>
       </div>
 
       {txStatus && (
-        <div className="mt-4 p-3 bg-slate-900 rounded-lg border border-slate-600">
-          <p className="text-sm text-gray-300">{txStatus}</p>
+        <div className="mt-4 p-3 bg-bg rounded-lg border border-line">
+          <p className="text-sm text-ink2">{txStatus}</p>
         </div>
       )}
     </div>
